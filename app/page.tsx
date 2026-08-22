@@ -197,6 +197,17 @@ export default function Home() {
           }
         }
 
+        @keyframes cardReveal {
+          from {
+            opacity: 0;
+            transform: translateY(35px) scale(0.98);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+          }
+        }
+
         .animate-petal {
           animation-name: petalFall;
           animation-iteration-count: infinite;
@@ -216,6 +227,13 @@ export default function Home() {
           animation-fill-mode: both;
           animation-timeline: view();
           animation-range: entry 10% cover 30%;
+        }
+
+        .scroll-reveal-card {
+          animation-name: cardReveal;
+          animation-fill-mode: both;
+          animation-timeline: view();
+          animation-range: entry 5% cover 25%;
         }
       `}</style>
 
@@ -477,7 +495,7 @@ export default function Home() {
             
             <div className="w-10 border-b border-[#EFE8DE] mx-auto my-2" />
 
-            <div className="p-4 rounded-lg bg-[#F7F2EB]/40 border border-[#EFE8DE]/40 relative transition-transform duration-300 hover:scale-[1.02]">
+            <div className="p-4 rounded-lg bg-[#F7F2EB]/40 border border-[#EFE8DE]/40 relative transition-transform duration-300 hover:scale-[1.02] scroll-reveal-card">
               <p className="font-sans text-xs text-[#2D1810]/85 leading-relaxed font-light">
                 Desde el primer día que conversamos, supimos que compartíamos un camino común. Nuestra historia se ha construido de risas, metas compartidas y un profundo amor que hoy decidimos consolidar ante Dios y las personas que más queremos.
               </p>
@@ -487,7 +505,7 @@ export default function Home() {
               <Heart className="w-4 h-4 fill-current" />
             </div>
 
-            <div className="p-4 rounded-lg bg-[#FDFBF7]/60 border border-[#EFE8DE]/45 relative transition-transform duration-300 hover:scale-[1.02]">
+            <div className="p-4 rounded-lg bg-[#FDFBF7]/60 border border-[#EFE8DE]/45 relative transition-transform duration-300 hover:scale-[1.02] scroll-reveal-card">
               <p className="font-sans text-xs text-[#2D1810]/85 leading-relaxed font-light">
                 Estamos felices de comenzar esta nueva etapa y agradecidos de contar con su cariño en este día tan especial de nuestras vidas.
               </p>
@@ -542,7 +560,7 @@ export default function Home() {
               </svg>
             </div>
 
-            <div className="border border-[#7A1C28]/15 rounded-t-full px-6 py-12 bg-white shadow-xs relative transition-transform duration-500 hover:scale-[1.01]">
+            <div className="border border-[#7A1C28]/15 rounded-t-full px-6 py-12 bg-white shadow-xs relative transition-transform duration-500 hover:scale-[1.01] scroll-reveal-card">
               <div className="absolute inset-1.5 border border-dashed border-[#7A1C28]/10 rounded-t-full pointer-events-none" />
 
               {/* Timeline list */}
@@ -644,7 +662,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="max-w-xs mx-auto text-center space-y-6 relative z-10">
+          <div className="max-w-xs mx-auto text-center space-y-6 relative z-10 scroll-reveal-card">
             
             {/* Outline vectors */}
             <div className="flex justify-center gap-6">
@@ -753,7 +771,7 @@ export default function Home() {
           <div className="space-y-6 max-w-xs mx-auto text-left relative z-10">
             
             {/* Ceremony Card */}
-            <div className="bg-white border border-[#EFE8DE] rounded-lg overflow-hidden shadow-xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 group">
+            <div className="bg-white border border-[#EFE8DE] rounded-lg overflow-hidden shadow-xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 group scroll-reveal-card">
               <div className="h-32 bg-gradient-to-br from-[#FAF2EB] via-[#F3D7D7] to-[#D98282] p-4 flex items-end relative border-b border-[#EFE8DE] overflow-hidden">
                 
                 {/* SVG Facade Line art in Olive Green with flower branches */}
@@ -789,7 +807,7 @@ export default function Home() {
             </div>
 
             {/* Reception Card */}
-            <div className="bg-white border border-[#EFE8DE] rounded-lg overflow-hidden shadow-xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 group">
+            <div className="bg-white border border-[#EFE8DE] rounded-lg overflow-hidden shadow-xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 group scroll-reveal-card">
               <div className="h-32 bg-gradient-to-br from-[#FAF2EB] via-[#F3D7D7] to-[#D98282] p-4 flex items-end relative border-b border-[#EFE8DE] overflow-hidden">
                 
                 {/* SVG Facade Line art */}
@@ -855,7 +873,7 @@ export default function Home() {
           <div className="grid grid-cols-3 gap-3 max-w-xs mx-auto relative z-10">
             
             {/* Photo 1: Vertical Tall */}
-            <div className="col-span-2 row-span-2 h-72 rounded-lg overflow-hidden border border-[#EFE8DE] shadow-xs relative group bg-gradient-to-br from-[#FAF2EB] via-[#F3D7D7] to-[#D98282] flex items-center justify-center transition-all duration-300 hover:scale-[1.01] hover:shadow-sm cursor-pointer">
+            <div className="col-span-2 row-span-2 h-72 rounded-lg overflow-hidden border border-[#EFE8DE] shadow-xs relative group bg-gradient-to-br from-[#FAF2EB] via-[#F3D7D7] to-[#D98282] flex items-center justify-center transition-all duration-300 hover:scale-[1.01] hover:shadow-sm cursor-pointer scroll-reveal-card">
               <div className="absolute inset-0 bg-[#7A1C28]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
               {/* Botanical Overlay Drawing */}
               <div className="text-[#7A1C28]/25 w-24 h-24 absolute pointer-events-none select-none animate-float">
@@ -869,7 +887,7 @@ export default function Home() {
             </div>
 
             {/* Photo 2: Small Square */}
-            <div className="col-span-1 row-span-1 h-32 rounded-lg overflow-hidden border border-[#EFE8DE] shadow-xs relative group bg-gradient-to-br from-[#FDFBF7] via-[#F3D7D7] to-[#E59834]/30 flex items-center justify-center transition-all duration-300 hover:scale-[1.02] hover:shadow-xs cursor-pointer">
+            <div className="col-span-1 row-span-1 h-32 rounded-lg overflow-hidden border border-[#EFE8DE] shadow-xs relative group bg-gradient-to-br from-[#FDFBF7] via-[#F3D7D7] to-[#E59834]/30 flex items-center justify-center transition-all duration-300 hover:scale-[1.02] hover:shadow-xs cursor-pointer scroll-reveal-card">
               <div className="absolute inset-0 bg-[#7A1C28]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
               <div className="text-[#6B7E43]/20 w-12 h-12 absolute pointer-events-none select-none animate-float" style={{ animationDelay: "1.5s" }}>
                 <svg viewBox="0 0 50 50" className="w-full h-full fill-none stroke-current stroke-1">
@@ -882,7 +900,7 @@ export default function Home() {
             </div>
 
             {/* Photo 3: Small Square */}
-            <div className="col-span-1 row-span-1 h-32 rounded-lg overflow-hidden border border-[#EFE8DE] shadow-xs relative group bg-gradient-to-br from-[#FAF2EB] via-[#FAF8F5] to-[#6B7E43]/20 flex items-center justify-center transition-all duration-300 hover:scale-[1.02] hover:shadow-xs cursor-pointer">
+            <div className="col-span-1 row-span-1 h-32 rounded-lg overflow-hidden border border-[#EFE8DE] shadow-xs relative group bg-gradient-to-br from-[#FAF2EB] via-[#FAF8F5] to-[#6B7E43]/20 flex items-center justify-center transition-all duration-300 hover:scale-[1.02] hover:shadow-xs cursor-pointer scroll-reveal-card">
               <div className="absolute inset-0 bg-[#7A1C28]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
               <div className="text-[#6B7E43]/20 w-12 h-12 absolute pointer-events-none select-none animate-float" style={{ animationDelay: "3s" }}>
                 <svg viewBox="0 0 50 50" className="w-full h-full fill-none stroke-current stroke-1">
@@ -895,7 +913,7 @@ export default function Home() {
             </div>
 
             {/* Photo 4: Horizontal Wide */}
-            <div className="col-span-3 row-span-1 h-40 rounded-lg overflow-hidden border border-[#EFE8DE] shadow-xs relative group bg-gradient-to-br from-[#FDFBF7] via-[#FAF2EB] to-[#D98282]/40 flex items-center justify-center transition-all duration-300 hover:scale-[1.01] hover:shadow-sm cursor-pointer">
+            <div className="col-span-3 row-span-1 h-40 rounded-lg overflow-hidden border border-[#EFE8DE] shadow-xs relative group bg-gradient-to-br from-[#FDFBF7] via-[#FAF2EB] to-[#D98282]/40 flex items-center justify-center transition-all duration-300 hover:scale-[1.01] hover:shadow-sm cursor-pointer scroll-reveal-card">
               <div className="absolute inset-0 bg-[#7A1C28]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
               <div className="text-[#7A1C28]/15 w-36 h-12 absolute pointer-events-none select-none animate-float" style={{ animationDelay: "2s" }}>
                 <svg viewBox="0 0 150 50" className="w-full h-full fill-none stroke-current stroke-1">
@@ -937,7 +955,7 @@ export default function Home() {
             <div className="w-10 my-3 border-b border-[#EFE8DE] mx-auto" />
           </div>
 
-          <form onSubmit={handleRSVPSubmit} className="space-y-5 relative z-10 max-w-xs mx-auto text-left">
+          <form onSubmit={handleRSVPSubmit} className="space-y-5 relative z-10 max-w-xs mx-auto text-left scroll-reveal-card">
             
             {/* Name */}
             <div className="flex flex-col">
