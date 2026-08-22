@@ -18,6 +18,24 @@ import {
   Camera
 } from "lucide-react";
 
+const PETALS_CONFIG = [
+  { left: "8%", size: 13, delay: "0s", duration: "6.5s", color: "#D98282", opacity: 0.75, rotate: 12 },
+  { left: "22%", size: 17, delay: "1.2s", duration: "8s", color: "#7A1C28", opacity: 0.55, rotate: 35 },
+  { left: "33%", size: 12, delay: "2.8s", duration: "7s", color: "#E59834", opacity: 0.50, rotate: -25 },
+  { left: "48%", size: 19, delay: "0.4s", duration: "9s", color: "#C8521A", opacity: 0.50, rotate: 20 },
+  { left: "62%", size: 14, delay: "1.8s", duration: "5.8s", color: "#D98282", opacity: 0.80, rotate: -15 },
+  { left: "76%", size: 16, delay: "4.2s", duration: "7.6s", color: "#7A1C28", opacity: 0.60, rotate: 45 },
+  { left: "88%", size: 13, delay: "0.8s", duration: "6.2s", color: "#E59834", opacity: 0.50, rotate: 8 },
+  { left: "12%", size: 16, delay: "5.2s", duration: "8.6s", color: "#C8521A", opacity: 0.50, rotate: -30 },
+  { left: "28%", size: 14, delay: "2.2s", duration: "7.2s", color: "#D98282", opacity: 0.65, rotate: 18 },
+  { left: "42%", size: 18, delay: "3.2s", duration: "9.2s", color: "#7A1C28", opacity: 0.55, rotate: -12 },
+  { left: "55%", size: 11, delay: "6.2s", duration: "6.2s", color: "#E59834", opacity: 0.50, rotate: 40 },
+  { left: "70%", size: 17, delay: "1.5s", duration: "8.4s", color: "#C8521A", opacity: 0.50, rotate: -35 },
+  { left: "82%", size: 13, delay: "3.8s", duration: "7.4s", color: "#D98282", opacity: 0.70, rotate: 5 },
+  { left: "18%", size: 15, delay: "0.6s", duration: "6.9s", color: "#7A1C28", opacity: 0.55, rotate: 28 },
+  { left: "73%", size: 12, delay: "3.0s", duration: "7.9s", color: "#E59834", opacity: 0.60, rotate: -22 }
+];
+
 export default function Home() {
   // Envelope / Cover Screen State
   const [isEnvelopeOpen, setIsEnvelopeOpen] = useState(false);
@@ -125,6 +143,82 @@ export default function Home() {
   return (
     <main className="flex-1 w-full flex items-center justify-center p-0 md:py-8 sm:px-4 bg-[#F7F2EB] text-[#2D1810]">
       
+      {/* Dynamic Keyframes Stylesheet (Shared scoped animations) */}
+      <style>{`
+        @keyframes petalFall {
+          0% {
+            opacity: 0;
+            transform: translateY(-10%) rotate(0deg) translateX(0px);
+          }
+          15% {
+            opacity: 0.8;
+          }
+          85% {
+            opacity: 0.7;
+          }
+          100% {
+            opacity: 0;
+            transform: translateY(105vh) rotate(360deg) translateX(25px);
+          }
+        }
+        
+        @keyframes titleReveal {
+          0% {
+            opacity: 0;
+            transform: translateY(24px) scale(0.96);
+            letter-spacing: -0.05em;
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            letter-spacing: 0.1em;
+          }
+        }
+
+        @keyframes subtitleReveal {
+          0% {
+            opacity: 0;
+            transform: scale(0.7) rotate(-8deg);
+          }
+          100% {
+            opacity: 1;
+            transform: scale(1) rotate(0deg);
+          }
+        }
+
+        @keyframes scrollReveal {
+          from {
+            opacity: 0;
+            transform: translateY(20px) scale(0.97);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+          }
+        }
+
+        .animate-petal {
+          animation-name: petalFall;
+          animation-iteration-count: infinite;
+          animation-timing-function: ease-in-out;
+        }
+
+        .animate-title-reveal {
+          animation: titleReveal 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .animate-subtitle-reveal {
+          animation: subtitleReveal 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .scroll-reveal-title {
+          animation-name: scrollReveal;
+          animation-fill-mode: both;
+          animation-timeline: view();
+          animation-range: entry 10% cover 30%;
+        }
+      `}</style>
+
       {/* Centered Vertical Story Card Container */}
       <div className="w-full max-w-md min-h-screen md:min-h-[850px] md:max-h-[92vh] md:rounded-xl bg-[#FDFBF7] shadow-2xl overflow-y-auto relative border-x border-[#EFE8DE] flex flex-col md:my-auto scrollbar-thin">
         
@@ -217,6 +311,31 @@ export default function Home() {
           <div className="absolute inset-4 border border-[#EFE8DE] pointer-events-none rounded-md" />
           <div className="absolute inset-[18px] border border-dashed border-[#EFE8DE]/50 pointer-events-none rounded-md" />
 
+          {/* Falling Petals Background Overlay */}
+          <div className="pointer-events-none absolute inset-0 overflow-hidden z-20">
+            {isEnvelopeOpen && PETALS_CONFIG.map((petal, index) => (
+              <svg
+                key={index}
+                className="absolute animate-petal"
+                style={{
+                  left: petal.left,
+                  width: `${petal.size}px`,
+                  height: `${petal.size * 1.3}px`,
+                  animationDelay: petal.delay,
+                  animationDuration: petal.duration,
+                  color: petal.color,
+                  opacity: petal.opacity,
+                  transform: `rotate(${petal.rotate}deg)`,
+                  top: "-5%",
+                }}
+                viewBox="0 0 20 26"
+                fill="currentColor"
+              >
+                <path d="M10,0 C17,5 20,15 10,25 C0,15 3,5 10,0 Z" />
+              </svg>
+            ))}
+          </div>
+
           {/* Floating flower petals in hero background */}
           <div className="absolute top-24 left-10 w-8 h-8 text-[#D98282]/20 pointer-events-none animate-float select-none" style={{ animationDelay: "1s" }}>
             <svg viewBox="0 0 24 24" className="w-full h-full fill-current">
@@ -246,13 +365,35 @@ export default function Home() {
 
           {/* Names */}
           <div className="flex flex-col items-center z-10 my-auto">
-            <h1 className="font-serif text-4xl tracking-wider text-[#7A1C28] font-light uppercase transition-all duration-500 hover:scale-103 cursor-default">
-              Paola
-            </h1>
-            <span className="font-script text-3xl text-[#C8521A] my-1 animate-pulse" style={{ animationDuration: "3s" }}>y</span>
-            <h1 className="font-serif text-4xl tracking-wider text-[#7A1C28] font-light uppercase transition-all duration-500 hover:scale-103 cursor-default">
-              Rogelio
-            </h1>
+            {isEnvelopeOpen ? (
+              <>
+                <h1 
+                  className="font-serif text-4xl tracking-wider text-[#7A1C28] font-light uppercase transition-all duration-500 hover:scale-103 cursor-default animate-title-reveal"
+                  style={{ animationDelay: "0.2s", opacity: 0 }}
+                >
+                  Paola
+                </h1>
+                <span 
+                  className="font-script text-3xl text-[#C8521A] my-1 animate-subtitle-reveal"
+                  style={{ animationDelay: "0.7s", opacity: 0 }}
+                >
+                  y
+                </span>
+                <h1 
+                  className="font-serif text-4xl tracking-wider text-[#7A1C28] font-light uppercase transition-all duration-500 hover:scale-103 cursor-default animate-title-reveal"
+                  style={{ animationDelay: "1.2s", opacity: 0 }}
+                >
+                  Rogelio
+                </h1>
+              </>
+            ) : (
+              // Fallback during server pre-rendering / closed envelope state
+              <>
+                <h1 className="font-serif text-4xl tracking-wider text-[#7A1C28] font-light uppercase">Paola</h1>
+                <span className="font-script text-3xl text-[#C8521A] my-1">y</span>
+                <h1 className="font-serif text-4xl tracking-wider text-[#7A1C28] font-light uppercase">Rogelio</h1>
+              </>
+            )}
           </div>
 
           {/* Arch Portrait Placeholder with detailed monoline flowers */}
@@ -330,7 +471,7 @@ export default function Home() {
           </div>
 
           <div className="relative z-10 max-w-xs mx-auto text-center space-y-5">
-            <span className="font-script text-4xl text-[#C8521A] block">
+            <span className="font-script text-4xl text-[#C8521A] block scroll-reveal-title">
               Nuestra Historia
             </span>
             
@@ -370,7 +511,7 @@ export default function Home() {
           </div>
 
           <div className="text-center mb-10 relative z-10">
-            <span className="font-script text-4xl text-[#C8521A] block">
+            <span className="font-script text-4xl text-[#C8521A] block scroll-reveal-title">
               El Itinerario
             </span>
             <p className="font-sans text-[9px] tracking-[0.2em] text-[#7A1C28]/60 uppercase mt-1 font-bold">
@@ -495,7 +636,7 @@ export default function Home() {
 
           {/* Header */}
           <div className="text-center mb-10 relative z-10">
-            <span className="font-script text-4xl text-[#C8521A] block">
+            <span className="font-script text-4xl text-[#C8521A] block scroll-reveal-title">
               Código de Vestimenta
             </span>
             <p className="font-sans text-[9px] tracking-[0.2em] text-[#7A1C28]/60 uppercase mt-1 font-bold">
@@ -601,7 +742,7 @@ export default function Home() {
         {/* ================= UBICACIONES ================= */}
         <section className="py-16 px-6 bg-[#F7F2EB] relative border-t border-[#EFE8DE]">
           <div className="text-center mb-10">
-            <span className="font-script text-4xl text-[#C8521A] block animate-pulse" style={{ animationDuration: "5s" }}>
+            <span className="font-script text-4xl text-[#C8521A] block scroll-reveal-title">
               Ubicaciones
             </span>
             <p className="font-sans text-[9px] tracking-[0.2em] text-[#7A1C28]/60 uppercase mt-1 font-semibold">
@@ -702,10 +843,10 @@ export default function Home() {
           </div>
 
           <div className="text-center mb-10 relative z-10">
-            <span className="font-script text-4xl text-[#C8521A] block">
+            <span className="font-script text-4xl text-[#C8521A] block scroll-reveal-title">
               Momentos Guardados
             </span>
-            <p className="font-sans text-[9px] tracking-[0.2em] text-[#7A1C28]/60 uppercase mt-1 font-bold">
+            <p className="font-sans text-[9px] tracking-[0.2em] text-[#7A1C28]/60 uppercase mt-1 font-bold font-serif">
               PHOTO GALLERY
             </p>
           </div>
@@ -787,7 +928,7 @@ export default function Home() {
 
           {/* Header */}
           <div className="text-center mb-8 relative z-10">
-            <span className="font-script text-4xl text-[#C8521A] block">
+            <span className="font-script text-4xl text-[#C8521A] block scroll-reveal-title">
               Confirma tu Asistencia
             </span>
             <p className="font-sans text-[10px] tracking-[0.2em] text-[#7A1C28]/60 uppercase mt-2 font-semibold">
