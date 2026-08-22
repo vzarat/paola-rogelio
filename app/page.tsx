@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState, useRef } from "react";
 import {
   Play,
   Pause,
@@ -19,12 +19,12 @@ import {
 } from "lucide-react";
 
 export default function Home() {
-  // Page Loading State
-  const [isLoading, setIsLoading] = useState(true);
+  // Envelope / Cover Screen State
+  const [isEnvelopeOpen, setIsEnvelopeOpen] = useState(false);
 
-  // Audio Player State
+  // Audio Playback State
   const [isPlaying, setIsPlaying] = useState(false);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const iframeRef = useRef<HTMLIFrameElement | null>(null);
   
   // Bank Details Copy State
   const [copied, setCopied] = useState(false);
@@ -36,42 +36,57 @@ export default function Home() {
   const [guests, setGuests] = useState("1");
   const [diet, setDiet] = useState("");
 
-  // Target Audio: Romantic instrumental background track
-  const audioUrl = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3";
+  const handleOpenInvitation = () => {
+    setIsEnvelopeOpen(true);
+    setIsPlaying(true);
 
-  // End loading screen after 1.8s
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 1800);
-    return () => clearTimeout(timer);
-  }, []);
-
-  useEffect(() => {
-    audioRef.current = new Audio(audioUrl);
-    audioRef.current.loop = true;
-    audioRef.current.volume = 0.3;
-
-    return () => {
-      if (audioRef.current) {
-        audioRef.current.pause();
-        audioRef.current = null;
+    // Apply volume fade-in effect over 4 seconds (0% to 100%)
+    let currentVolume = 0;
+    
+    // Wait 1 second for the YouTube Iframe to initialize and begin loading
+    setTimeout(() => {
+      // Set initial volume to 0
+      if (iframeRef.current && iframeRef.current.contentWindow) {
+        iframeRef.current.contentWindow.postMessage(
+          '{"event":"command","func":"setVolume","args":[0]}',
+          "*"
+        );
       }
-    };
-  }, []);
+
+      // Smoothly increment volume by 5% every 200ms (Total: 4 seconds)
+      const fadeInterval = setInterval(() => {
+        currentVolume += 5;
+        if (currentVolume > 100) {
+          clearInterval(fadeInterval);
+        } else {
+          if (iframeRef.current && iframeRef.current.contentWindow) {
+            iframeRef.current.contentWindow.postMessage(
+              `{"event":"command","func":"setVolume","args":[${currentVolume}]}`,
+              "*"
+            );
+          }
+        }
+      }, 200);
+    }, 1000);
+  };
 
   const togglePlay = () => {
-    if (!audioRef.current) return;
+    if (!iframeRef.current || !iframeRef.current.contentWindow) return;
 
     if (isPlaying) {
-      audioRef.current.pause();
+      // Send postMessage command to pause YouTube player
+      iframeRef.current.contentWindow.postMessage(
+        '{"event":"command","func":"pauseVideo","args":""}',
+        "*"
+      );
       setIsPlaying(false);
     } else {
-      audioRef.current.play().then(() => {
-        setIsPlaying(true);
-      }).catch((err) => {
-        console.error("Audio play failed or blocked by browser:", err);
-      });
+      // Send postMessage command to play YouTube player
+      iframeRef.current.contentWindow.postMessage(
+        '{"event":"command","func":"playVideo","args":""}',
+        "*"
+      );
+      setIsPlaying(true);
     }
   };
 
@@ -87,8 +102,7 @@ export default function Home() {
     e.preventDefault();
     if (!name || !attendance) return;
 
-    // Direct WhatsApp API redirect link
-    const targetPhone = "521234567890"; // Configurable RSVP Phone
+    const targetPhone = "521234567890";
     const attendanceMsg = attendance === "yes" ? "¡Sí, con mucho gusto asistiré!" : "Lo siento, no podré asistir";
     const guestsMsg = attendance === "yes" ? `Pases sugeridos: ${guests}` : "Pases sugeridos: 0";
     const restrictionsMsg = diet ? `Notas / Restricciones dietarias: ${diet}` : "Notas / Restricciones: Ninguna";
@@ -113,28 +127,65 @@ export default function Home() {
       {/* Centered Vertical Story Card Container */}
       <div className="w-full max-w-md min-h-screen md:min-h-[850px] md:max-h-[92vh] md:rounded-xl bg-[#FDFBF7] shadow-2xl overflow-y-auto relative border-x border-[#EFE8DE] flex flex-col md:my-auto scrollbar-thin">
         
-        {/* ================= LOADING SCREEN MONOGRAM COVER ================= */}
-        <div className={`absolute inset-0 bg-[#FDFBF7] z-50 flex flex-col items-center justify-center transition-all duration-1000 select-none ${
-          isLoading ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"
+        {/* ================= WELCOME OPENING SCREEN (ENVELOPE COVER) ================= */}
+        <div className={`absolute inset-0 bg-[#FDFBF7] z-50 flex flex-col items-center justify-between py-16 px-6 transition-all duration-1000 select-none ${
+          isEnvelopeOpen ? "translate-y-[-100%] opacity-0 pointer-events-none" : "translate-y-0 opacity-100"
         }`}>
-          {/* Animated pulsing/rotating monogram ring */}
-          <div className="relative w-28 h-28 my-4 flex items-center justify-center bg-white rounded-full border border-[#7A1C28]/25 shadow-lg animate-pulse">
-            <div className="absolute inset-[5px] rounded-full border border-dashed border-[#7A1C28]/15 animate-[spin_12s_linear_infinite]" />
+          {/* Burgundy border frame */}
+          <div className="absolute inset-4 border-2 border-[#7A1C28] pointer-events-none rounded-md" />
+          <div className="absolute inset-[22px] border border-dashed border-[#7A1C28]/40 pointer-events-none rounded-md" />
+
+          {/* Monogram */}
+          <div className="relative w-24 h-24 mt-8 flex items-center justify-center bg-white rounded-full border border-[#7A1C28]/25 shadow-lg animate-pulse">
+            <div className="absolute inset-[5px] rounded-full border border-dashed border-[#7A1C28]/15 animate-[spin_16s_linear_infinite]" />
             <span className="font-serif text-3xl font-light text-[#7A1C28] tracking-widest">P&R</span>
           </div>
-          <h2 className="font-script text-4.5xl text-[#C8521A] mt-4 tracking-wide">Paola & Rogelio</h2>
-          <p className="font-sans text-[10px] tracking-[0.35em] text-[#7A1C28] uppercase mt-2 font-bold">OCTUBRE 24, 2026</p>
-          <div className="w-16 h-[1px] bg-[#EFE8DE] mt-6 animate-pulse" />
+
+          {/* Invitation Text */}
+          <div className="space-y-4 max-w-xs text-center my-auto">
+            <p className="font-sans text-[9px] tracking-[0.35em] text-[#7A1C28] uppercase font-bold">NUESTRA BODA</p>
+            <h2 className="font-script text-5xl text-[#C8521A] leading-relaxed">Paola & Rogelio</h2>
+            <div className="w-12 border-b border-[#7A1C28]/30 mx-auto" />
+            <p className="font-sans text-[11px] text-[#2D1810]/60 leading-relaxed font-light mt-4">
+              Te invitamos a compartir con nosotros el día más importante de nuestras vidas.
+            </p>
+          </div>
+
+          {/* Button to Open & Autoplay Audio */}
+          <div className="mb-8 flex flex-col items-center space-y-3 z-10">
+            <p className="font-sans text-[9px] tracking-wider text-[#7A1C28]/70 uppercase animate-pulse">
+              Toca para abrir la invitación con música
+            </p>
+            <button
+              onClick={handleOpenInvitation}
+              className="px-8 py-3 bg-[#7A1C28] hover:bg-[#C8521A] active:scale-95 text-white text-xs font-bold uppercase tracking-widest rounded-full shadow-md hover:shadow-lg transition-all duration-300 flex items-center gap-2 cursor-pointer"
+            >
+              <span>Abrir Invitación</span>
+              <span className="text-base">✉️</span>
+            </button>
+          </div>
         </div>
 
-        {/* ================= HEADER FLOTANTE CON AUDIO ================= */}
-        <div className="fixed top-6 right-6 z-50">
+        {/* ================= HIDDEN YOUTUBE EMBED PLAYER ================= */}
+        {isEnvelopeOpen && (
+          <iframe
+            ref={iframeRef}
+            className="hidden"
+            width="1"
+            height="1"
+            src="https://www.youtube.com/embed/4lA5jYpFvcQ?enablejsapi=1&start=120&autoplay=1&controls=0&loop=1&playlist=4lA5jYpFvcQ"
+            allow="autoplay"
+          />
+        )}
+
+        {/* ================= HEADER FLOTANTE CON AUDIO PERSISTENTE ================= */}
+        <div className="fixed top-6 right-6 z-40">
           <button
             onClick={togglePlay}
             className="flex items-center gap-2 px-3 py-2 rounded-full bg-white/90 border border-[#EFE8DE] backdrop-blur-md shadow-md hover:bg-white active:scale-95 hover:shadow-lg transition-all duration-300 group"
             aria-label={isPlaying ? "Silenciar música" : "Escuchar música"}
           >
-            {/* Equalizer animation */}
+            {/* Equalizer waves animation */}
             <div className="flex items-end gap-[2px] h-3 w-3.5">
               <span
                 className={`w-[2px] bg-[#7A1C28] rounded-full transition-all duration-300 ${
@@ -244,9 +295,9 @@ export default function Home() {
             <div className="flex items-center justify-center gap-3 py-1.5 px-5 bg-white border border-[#EFE8DE] rounded-full font-serif text-xs font-semibold tracking-widest text-[#7A1C28] shadow-xs hover:scale-105 active:scale-97 transition-all duration-300 cursor-pointer">
               <span>SÁBADO</span>
               <span className="w-px h-3.5 bg-[#7A1C28]/20" />
-              <span className="text-[#C8521A] text-sm">24</span>
+              <span className="text-[#C8521A] text-sm">14</span>
               <span className="w-px h-3.5 bg-[#7A1C28]/20" />
-              <span>OCTUBRE 2026</span>
+              <span>NOVIEMBRE 2026</span>
             </div>
           </div>
 
@@ -490,12 +541,12 @@ export default function Home() {
 
             {/* Suggested Palette */}
             <div className="py-3 bg-[#FDFBF7]/85 border border-[#EFE8DE] rounded-lg p-3">
-              <p className="text-[9px] uppercase tracking-wider font-semibold text-[#7A1C28]/70 mb-2 font-bold">
+              <p className="text-[9px] uppercase tracking-wider font-semibold text-[#7A1C28]/70 mb-2 font-bold font-serif">
                 Guía de Color para Invitados
               </p>
               <div className="flex justify-center gap-2">
                 {colorPalette.map((item, idx) => (
-                  <div key={idx} className="flex flex-col items-center gap-1 transition-transform hover:scale-115 duration-300 cursor-pointer">
+                  <div key={idx} className="flex flex-col items-center gap-1 transition-transform hover:scale-115 duration-305 cursor-pointer">
                     <div className={`w-7 h-7 rounded-full ${item.hex} border ${item.border} shadow-inner`} />
                     <span className="text-[8px] text-[#2D1810]/70 font-semibold">{item.name}</span>
                   </div>
@@ -745,7 +796,7 @@ export default function Home() {
               Confirma tu Asistencia
             </span>
             <p className="font-sans text-[10px] tracking-[0.2em] text-[#7A1C28]/60 uppercase mt-2 font-semibold">
-              FAVOR DE CONFIRMAR ANTES DEL 24 DE SEPTIEMBRE 2026
+              FAVOR DE CONFIRMAR ANTES DEL 14 DE OCTUBRE 2026
             </p>
             <div className="w-10 my-3 border-b border-[#EFE8DE] mx-auto" />
           </div>
