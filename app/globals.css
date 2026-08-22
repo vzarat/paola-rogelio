@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy-primary: #1B365D;
+  --color-royal-blue: #2563EB;
+  --color-sky-blue: #93C5FD;
+  --color-slate-blue: #64748B;
+  --color-warm-crema: #FBF9F5;
+  --color-sepia-border: #E2DDD5;
+  --color-warm-crema-dark: #F5F2EB;
+  
+  --font-serif: var(--font-playfair), Georgia, serif;
+  --font-script: var(--font-great-vibes), cursive;
+  --font-sans: var(--font-jakarta), system-ui, sans-serif;
+  
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-slow: pulseSlow 4s ease-in-out infinite;
+  --animate-fade-in-up: fadeInUp 0.8s ease-out forwards;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  @keyframes pulseSlow {
+    0%, 100% { opacity: 0.15; }
+    50% { opacity: 0.4; }
+  }
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Custom Scrollbar for mobile layout card */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #FBF9F5;
+}
+::-webkit-scrollbar-thumb {
+  background: #1B365D;
+  border-radius: 2px;
+}
+
+body {
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+}
+
+/* Custom romantic decorative utilities */
+.editorial-border {
+  border: 1px solid rgba(27, 54, 93, 0.12);
+}
+
+.editorial-double-border {
+  border: 4px double rgba(27, 54, 93, 0.2);
+}
+
+.editorial-divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(27, 54, 93, 0.15), transparent);
+}
+
+.monogram-circle {
+  border: 1px solid rgba(27, 54, 93, 0.2);
+  position: relative;
+}
+.monogram-circle::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  right: 3px;
+  bottom: 3px;
+  border: 1px dashed rgba(27, 54, 93, 0.15);
+  border-radius: 50%;
+}
+
+
