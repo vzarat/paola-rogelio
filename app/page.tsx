@@ -24,7 +24,7 @@ export default function Home() {
 
   // Audio Playback State
   const [isPlaying, setIsPlaying] = useState(false);
-  const iframeRef = useRef<HTMLIFrameElement | null>(null);
+  const audioRef = useRef<HTMLAudioElement>(null);
   
   // Bank Details Copy State
   const [copied, setCopied] = useState(false);
@@ -36,56 +36,47 @@ export default function Home() {
   const [guests, setGuests] = useState("1");
   const [diet, setDiet] = useState("");
 
-  const handleOpenInvitation = () => {
+  const handleOpenEnvelope = () => {
     setIsEnvelopeOpen(true);
     setIsPlaying(true);
 
-    // Apply volume fade-in effect over 4 seconds (0% to 100%)
-    let currentVolume = 0;
-    
-    // Wait 1 second for the YouTube Iframe to initialize and begin loading
-    setTimeout(() => {
-      // Set initial volume to 0
-      if (iframeRef.current && iframeRef.current.contentWindow) {
-        iframeRef.current.contentWindow.postMessage(
-          '{"event":"command","func":"setVolume","args":[0]}',
-          "*"
-        );
-      }
+    if (audioRef.current) {
+      audioRef.current.currentTime = 120; // Inicia en min 2:00 (120 segundos)
+      audioRef.current.volume = 0; // Empieza en silencio absoluto
 
-      // Smoothly increment volume by 5% every 200ms (Total: 4 seconds)
-      const fadeInterval = setInterval(() => {
-        currentVolume += 5;
-        if (currentVolume > 100) {
-          clearInterval(fadeInterval);
-        } else {
-          if (iframeRef.current && iframeRef.current.contentWindow) {
-            iframeRef.current.contentWindow.postMessage(
-              `{"event":"command","func":"setVolume","args":[${currentVolume}]}`,
-              "*"
-            );
-          }
-        }
-      }, 200);
-    }, 1000);
+      audioRef.current.play()
+        .then(() => {
+          // Fade-in de volumen progresivo de 0 a 1 en 3 segundos (3000ms)
+          let currentVolume = 0;
+          const intervalTime = 100;
+          const totalSteps = 30; // 30 pasos * 100ms = 3000ms
+          let step = 0;
+
+          const fadeInterval = setInterval(() => {
+            step++;
+            currentVolume = Math.min(step / totalSteps, 1);
+            if (audioRef.current) {
+              audioRef.current.volume = currentVolume;
+            }
+            if (step >= totalSteps) {
+              clearInterval(fadeInterval);
+            }
+          }, intervalTime);
+        })
+        .catch(err => {
+          console.log("Audio play error:", err);
+        });
+    }
   };
 
   const togglePlay = () => {
-    if (!iframeRef.current || !iframeRef.current.contentWindow) return;
+    if (!audioRef.current) return;
 
     if (isPlaying) {
-      // Send postMessage command to pause YouTube player
-      iframeRef.current.contentWindow.postMessage(
-        '{"event":"command","func":"pauseVideo","args":""}',
-        "*"
-      );
+      audioRef.current.pause();
       setIsPlaying(false);
     } else {
-      // Send postMessage command to play YouTube player
-      iframeRef.current.contentWindow.postMessage(
-        '{"event":"command","func":"playVideo","args":""}',
-        "*"
-      );
+      audioRef.current.play().catch((err) => console.log("Audio play failed:", err));
       setIsPlaying(true);
     }
   };
@@ -128,8 +119,8 @@ export default function Home() {
       <div className="w-full max-w-md min-h-screen md:min-h-[850px] md:max-h-[92vh] md:rounded-xl bg-[#FDFBF7] shadow-2xl overflow-y-auto relative border-x border-[#EFE8DE] flex flex-col md:my-auto scrollbar-thin">
         
         {/* ================= WELCOME OPENING SCREEN (ENVELOPE COVER) ================= */}
-        <div className={`absolute inset-0 bg-[#FDFBF7] z-50 flex flex-col items-center justify-between py-16 px-6 transition-all duration-1000 select-none ${
-          isEnvelopeOpen ? "translate-y-[-100%] opacity-0 pointer-events-none" : "translate-y-0 opacity-100"
+        <div className={`fixed inset-0 z-50 flex flex-col items-center justify-between bg-[#FDFBF7] p-6 text-center overflow-hidden h-[100dvh] transition-opacity duration-700 select-none ${
+          isEnvelopeOpen ? "pointer-events-none opacity-0" : "opacity-100"
         }`}>
           {/* Burgundy border frame */}
           <div className="absolute inset-4 border-2 border-[#7A1C28] pointer-events-none rounded-md" />
@@ -157,7 +148,7 @@ export default function Home() {
               Toca para abrir la invitación con música
             </p>
             <button
-              onClick={handleOpenInvitation}
+              onClick={handleOpenEnvelope}
               className="px-8 py-3 bg-[#7A1C28] hover:bg-[#C8521A] active:scale-95 text-white text-xs font-bold uppercase tracking-widest rounded-full shadow-md hover:shadow-lg transition-all duration-300 flex items-center gap-2 cursor-pointer"
             >
               <span>Abrir Invitación</span>
@@ -166,17 +157,13 @@ export default function Home() {
           </div>
         </div>
 
-        {/* ================= HIDDEN YOUTUBE EMBED PLAYER ================= */}
-        {isEnvelopeOpen && (
-          <iframe
-            ref={iframeRef}
-            className="hidden"
-            width="1"
-            height="1"
-            src="https://www.youtube.com/embed/4lA5jYpFvcQ?enablejsapi=1&start=120&autoplay=1&controls=0&loop=1&playlist=4lA5jYpFvcQ"
-            allow="autoplay"
-          />
-        )}
+        {/* ================= NATIVE HTML5 AUDIO ELEMENT ================= */}
+        <audio 
+          ref={audioRef} 
+          src="/audio/cancion.mp3" 
+          preload="auto" 
+          loop 
+        />
 
         {/* ================= HEADER FLOTANTE CON AUDIO PERSISTENTE ================= */}
         <div className="fixed top-6 right-6 z-40">
@@ -710,7 +697,7 @@ export default function Home() {
             <span className="font-script text-4xl text-[#C8521A] block">
               Momentos Guardados
             </span>
-            <p className="font-sans text-[9px] tracking-[0.2em] text-[#7A1C28]/60 uppercase mt-1 font-bold">
+            <p className="font-sans text-[9px] tracking-[0.2em] text-[#7A1C28]/60 uppercase mt-1 font-bold font-serif">
               PHOTO GALLERY
             </p>
           </div>
