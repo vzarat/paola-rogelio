@@ -24,7 +24,7 @@ export default function Home() {
 
   // Audio Playback State
   const [isPlaying, setIsPlaying] = useState(false);
-  const audioRef = useRef<HTMLAudioElement>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
   
   // Bank Details Copy State
   const [copied, setCopied] = useState(false);
@@ -36,36 +36,45 @@ export default function Home() {
   const [guests, setGuests] = useState("1");
   const [diet, setDiet] = useState("");
 
-  const handleOpenEnvelope = () => {
+  const handleOpenInvitation = () => {
     setIsEnvelopeOpen(true);
-    setIsPlaying(true);
-
+    
     if (audioRef.current) {
-      audioRef.current.currentTime = 120; // Inicia en min 2:00 (120 segundos)
-      audioRef.current.volume = 0; // Empieza en silencio absoluto
+      const audio = audioRef.current;
+      
+      const startAudio = () => {
+        audio.currentTime = 122; // Inicia en min 2:02 (122 segundos)
+        audio.volume = 0; // Inicia en silencio
+        audio.play()
+          .then(() => {
+            setIsPlaying(true);
+            // Fade-in de volumen progresivo de 0 a 1 en 3 segundos (3000ms)
+            let currentVolume = 0;
+            const intervalTime = 100;
+            const totalSteps = 30; // 30 pasos * 100ms = 3000ms
+            let step = 0;
 
-      audioRef.current.play()
-        .then(() => {
-          // Fade-in de volumen progresivo de 0 a 1 en 3 segundos (3000ms)
-          let currentVolume = 0;
-          const intervalTime = 100;
-          const totalSteps = 30; // 30 pasos * 100ms = 3000ms
-          let step = 0;
+            const fadeInterval = setInterval(() => {
+              step++;
+              currentVolume = Math.min(step / totalSteps, 1);
+              if (audioRef.current) {
+                audioRef.current.volume = currentVolume;
+              }
+              if (step >= totalSteps) {
+                clearInterval(fadeInterval);
+              }
+            }, intervalTime);
+          })
+          .catch((err) => console.error("Error al reproducir /audio/cancion.mp3:", err));
+      };
 
-          const fadeInterval = setInterval(() => {
-            step++;
-            currentVolume = Math.min(step / totalSteps, 1);
-            if (audioRef.current) {
-              audioRef.current.volume = currentVolume;
-            }
-            if (step >= totalSteps) {
-              clearInterval(fadeInterval);
-            }
-          }, intervalTime);
-        })
-        .catch(err => {
-          console.log("Audio play error:", err);
-        });
+      // Si ya cargó los metadatos inicia directo, si no espera el evento
+      if (audio.readyState >= 1) {
+        startAudio();
+      } else {
+        audio.addEventListener('loadedmetadata', startAudio, { once: true });
+        audio.load();
+      }
     }
   };
 
@@ -76,8 +85,9 @@ export default function Home() {
       audioRef.current.pause();
       setIsPlaying(false);
     } else {
-      audioRef.current.play().catch((err) => console.log("Audio play failed:", err));
-      setIsPlaying(true);
+      audioRef.current.play()
+        .then(() => setIsPlaying(true))
+        .catch((err) => console.error("Error al reproducir /audio/cancion.mp3:", err));
     }
   };
 
@@ -148,7 +158,7 @@ export default function Home() {
               Toca para abrir la invitación con música
             </p>
             <button
-              onClick={handleOpenEnvelope}
+              onClick={handleOpenInvitation}
               className="px-8 py-3 bg-[#7A1C28] hover:bg-[#C8521A] active:scale-95 text-white text-xs font-bold uppercase tracking-widest rounded-full shadow-md hover:shadow-lg transition-all duration-300 flex items-center gap-2 cursor-pointer"
             >
               <span>Abrir Invitación</span>
@@ -158,12 +168,10 @@ export default function Home() {
         </div>
 
         {/* ================= NATIVE HTML5 AUDIO ELEMENT ================= */}
-        <audio 
-          ref={audioRef} 
-          src="/audio/cancion.mp3" 
-          preload="auto" 
-          loop 
-        />
+        <audio ref={audioRef} preload="metadata" loop playsInline>
+          <source src="/audio/cancion.mp3" type="audio/mpeg" />
+          Tu navegador no soporta el elemento de audio.
+        </audio>
 
         {/* ================= HEADER FLOTANTE CON AUDIO PERSISTENTE ================= */}
         <div className="fixed top-6 right-6 z-40">
@@ -697,7 +705,7 @@ export default function Home() {
             <span className="font-script text-4xl text-[#C8521A] block">
               Momentos Guardados
             </span>
-            <p className="font-sans text-[9px] tracking-[0.2em] text-[#7A1C28]/60 uppercase mt-1 font-bold font-serif">
+            <p className="font-sans text-[9px] tracking-[0.2em] text-[#7A1C28]/60 uppercase mt-1 font-bold">
               PHOTO GALLERY
             </p>
           </div>
@@ -954,7 +962,7 @@ export default function Home() {
           <p className="font-serif text-lg font-light text-[#7A1C28] tracking-widest animate-pulse">
             P & R
           </p>
-          <p className="font-sans text-xs font-semibold tracking-wider text-[#C8521A]">
+          <p className="font-sans text-[9px] font-semibold tracking-wider text-[#C8521A]">
             #BodaPaolaYRogelio
           </p>
           <p className="font-script text-2xl text-[#7A1C28]/70 pt-2 block">
