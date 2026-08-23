@@ -4,28 +4,16 @@ import { Clock, Church, Utensils, Camera, PartyPopper } from "lucide-react";
 export default function Program() {
   const events = [
     {
-      time: "2:00 PM",
-      title: "The Ceremony",
-      description: "Exchange of vows and blessing at the Chapel.",
+      time: "6:00 PM",
+      title: "Ceremonia Religiosa",
+      description: "Intercambio de votos y bendición sacramental.",
       icon: Church,
     },
     {
-      time: "4:00 PM",
-      title: "Cocktail Hour",
-      description: "Drinks, appetizers, and live acoustic music.",
+      time: "7:00 PM",
+      title: "Banquete & Fiesta",
+      description: "Cena, brindis de honor y celebración.",
       icon: PartyPopper,
-    },
-    {
-      time: "5:00 PM",
-      title: "Grand Dinner",
-      description: "Fine dining and celebration in the main hall.",
-      icon: Utensils,
-    },
-    {
-      time: "6:30 PM",
-      title: "First Dance & Photos",
-      description: "Cutting the cake, toasts, and dancing.",
-      icon: Camera,
     },
   ];
 
@@ -33,10 +21,10 @@ export default function Program() {
     <section className="py-16 px-6 bg-warm-crema relative border-t border-sepia-border">
       <div className="text-center mb-10">
         <span className="font-script text-4xl text-royal-blue block">
-          Wedding Program
+          Programa de la Boda
         </span>
         <p className="font-sans text-[10px] tracking-[0.2em] text-navy-primary/60 uppercase mt-1">
-          THE DAY'S ITINERARY
+          EL ITINERARIO DEL DÍA
         </p>
       </div>
 

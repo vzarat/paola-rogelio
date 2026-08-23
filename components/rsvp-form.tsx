@@ -17,11 +17,11 @@ export default function RsvpForm() {
     const phoneNumber = "521234567890";
 
     // Build the formatted text message
-    const attendanceText = attendance === "yes" ? "Yes, I will attend" : "No, I cannot attend";
-    const guestsText = attendance === "yes" ? `Guests: ${guests}` : "Guests: 0";
-    const dietText = diet ? `Dietary restrictions: ${diet}` : "Dietary restrictions: None";
+    const attendanceText = attendance === "yes" ? "Sí, asistiré" : "No podré asistir";
+    const guestsText = attendance === "yes" ? `Acompañantes: ${guests}` : "Acompañantes: 0";
+    const dietText = diet ? `Restricciones alimenticias: ${diet}` : "Restricciones alimenticias: Ninguna";
 
-    const text = `Hello Olivia & Ralph!\n\nI am responding to your wedding RSVP.\n\n*Name:* ${name}\n*Attendance:* ${attendanceText}\n*${guestsText}*\n*${dietText}*\n\nLooking forward to celebrating with you!`;
+    const text = `¡Hola Paola y Rogelio!\n\nConfirmo mi asistencia a su boda.\n\n*Nombre:* ${name}\n*Asistencia:* ${attendanceText}\n*${guestsText}*\n*${dietText}*\n\n¡Con muchas ganas de celebrar con ustedes!`;
     const encodedText = encodeURIComponent(text);
 
     // Open WhatsApp link in a new window

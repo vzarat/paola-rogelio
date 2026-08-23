@@ -19,21 +19,21 @@ import {
 } from "lucide-react";
 
 const PETALS_CONFIG = [
-  { left: "8%", size: 13, delay: "0s", duration: "6.5s", color: "#D98282", opacity: 0.75, rotate: 12 },
-  { left: "22%", size: 17, delay: "1.2s", duration: "8s", color: "#7A1C28", opacity: 0.55, rotate: 35 },
-  { left: "33%", size: 12, delay: "2.8s", duration: "7s", color: "#E59834", opacity: 0.50, rotate: -25 },
-  { left: "48%", size: 19, delay: "0.4s", duration: "9s", color: "#C8521A", opacity: 0.50, rotate: 20 },
-  { left: "62%", size: 14, delay: "1.8s", duration: "5.8s", color: "#D98282", opacity: 0.80, rotate: -15 },
-  { left: "76%", size: 16, delay: "4.2s", duration: "7.6s", color: "#7A1C28", opacity: 0.60, rotate: 45 },
-  { left: "88%", size: 13, delay: "0.8s", duration: "6.2s", color: "#E59834", opacity: 0.50, rotate: 8 },
-  { left: "12%", size: 16, delay: "5.2s", duration: "8.6s", color: "#C8521A", opacity: 0.50, rotate: -30 },
-  { left: "28%", size: 14, delay: "2.2s", duration: "7.2s", color: "#D98282", opacity: 0.65, rotate: 18 },
-  { left: "42%", size: 18, delay: "3.2s", duration: "9.2s", color: "#7A1C28", opacity: 0.55, rotate: -12 },
-  { left: "55%", size: 11, delay: "6.2s", duration: "6.2s", color: "#E59834", opacity: 0.50, rotate: 40 },
-  { left: "70%", size: 17, delay: "1.5s", duration: "8.4s", color: "#C8521A", opacity: 0.50, rotate: -35 },
-  { left: "82%", size: 13, delay: "3.8s", duration: "7.4s", color: "#D98282", opacity: 0.70, rotate: 5 },
-  { left: "18%", size: 15, delay: "0.6s", duration: "6.9s", color: "#7A1C28", opacity: 0.55, rotate: 28 },
-  { left: "73%", size: 12, delay: "3.0s", duration: "7.9s", color: "#E59834", opacity: 0.60, rotate: -22 }
+  { left: "8%", size: 13, delay: "0s", duration: "6.5s", color: "#B00056", opacity: 0.75, rotate: 12 },
+  { left: "22%", size: 17, delay: "1.2s", duration: "8s", color: "#E63917", opacity: 0.55, rotate: 35 },
+  { left: "33%", size: 12, delay: "2.8s", duration: "7s", color: "#FFB300", opacity: 0.50, rotate: -25 },
+  { left: "48%", size: 19, delay: "0.4s", duration: "9s", color: "#1D62C4", opacity: 0.50, rotate: 20 },
+  { left: "62%", size: 14, delay: "1.8s", duration: "5.8s", color: "#B00056", opacity: 0.80, rotate: -15 },
+  { left: "76%", size: 16, delay: "4.2s", duration: "7.6s", color: "#E63917", opacity: 0.60, rotate: 45 },
+  { left: "88%", size: 13, delay: "0.8s", duration: "6.2s", color: "#FFB300", opacity: 0.50, rotate: 8 },
+  { left: "12%", size: 16, delay: "5.2s", duration: "8.6s", color: "#1D62C4", opacity: 0.50, rotate: -30 },
+  { left: "28%", size: 14, delay: "2.2s", duration: "7.2s", color: "#B00056", opacity: 0.65, rotate: 18 },
+  { left: "42%", size: 18, delay: "3.2s", duration: "9.2s", color: "#E63917", opacity: 0.55, rotate: -12 },
+  { left: "55%", size: 11, delay: "6.2s", duration: "6.2s", color: "#FFB300", opacity: 0.50, rotate: 40 },
+  { left: "70%", size: 17, delay: "1.5s", duration: "8.4s", color: "#1D62C4", opacity: 0.50, rotate: -35 },
+  { left: "82%", size: 13, delay: "3.8s", duration: "7.4s", color: "#B00056", opacity: 0.70, rotate: 5 },
+  { left: "18%", size: 15, delay: "0.6s", duration: "6.9s", color: "#E63917", opacity: 0.55, rotate: 28 },
+  { left: "73%", size: 12, delay: "3.0s", duration: "7.9s", color: "#FFB300", opacity: 0.60, rotate: -22 }
 ];
 
 export default function Home() {
@@ -133,11 +133,11 @@ export default function Home() {
   };
 
   const colorPalette = [
-    { name: "Amber", hex: "bg-[#E59834]", border: "border-[#CC8122]" },
-    { name: "Burnt", hex: "bg-[#C8521A]", border: "border-[#AD4210]" },
-    { name: "Burgundy", hex: "bg-[#7A1C28]", border: "border-[#5E121B]" },
-    { name: "Rose", hex: "bg-[#D98282]", border: "border-[#C26B6B]" },
-    { name: "Green", hex: "bg-[#6B7E43]", border: "border-[#546432]" },
+    { name: "Magenta", hex: "bg-[#B00056]", border: "border-[#80003C]" },
+    { name: "Rojo Cálido", hex: "bg-[#E63917]", border: "border-[#B3240C]" },
+    { name: "Amarillo", hex: "bg-[#FFB300]", border: "border-[#CC8F00]" },
+    { name: "Azul Cobalto", hex: "bg-[#1D62C4]", border: "border-[#14438A]" },
+    { name: "Verde Olivo", hex: "bg-[#5A7A38]", border: "border-[#435C2A]" },
   ];
 
   return (
@@ -244,21 +244,27 @@ export default function Home() {
         <div className={`fixed inset-0 z-50 flex flex-col items-center justify-between bg-[#FDFBF7] p-6 text-center overflow-hidden h-[100dvh] transition-opacity duration-700 select-none ${
           isEnvelopeOpen ? "pointer-events-none opacity-0" : "opacity-100"
         }`}>
-          {/* Burgundy border frame */}
-          <div className="absolute inset-4 border-2 border-[#7A1C28] pointer-events-none rounded-md" />
-          <div className="absolute inset-[22px] border border-dashed border-[#7A1C28]/40 pointer-events-none rounded-md" />
+          {/* Dark border frame */}
+          <div className="absolute inset-4 border border-[#1A1A1A]/20 pointer-events-none rounded-md" />
+          <div className="absolute inset-[22px] border border-dashed border-[#1A1A1A]/10 pointer-events-none rounded-md" />
 
-          {/* Monogram */}
-          <div className="relative w-24 h-24 mt-8 flex items-center justify-center bg-white rounded-full border border-[#7A1C28]/25 shadow-lg animate-pulse">
-            <div className="absolute inset-[5px] rounded-full border border-dashed border-[#7A1C28]/15 animate-[spin_16s_linear_infinite]" />
-            <span className="font-serif text-3xl font-light text-[#7A1C28] tracking-widest">P&R</span>
+          {/* Floral Folk Art Header Banner */}
+          <div className="w-full -mt-6 z-10 max-w-[340px]">
+            <img src="/flores.png" alt="Flores" className="w-full h-auto object-contain" />
           </div>
 
           {/* Invitation Text */}
-          <div className="space-y-4 max-w-xs text-center my-auto">
-            <p className="font-sans text-[9px] tracking-[0.35em] text-[#7A1C28] uppercase font-bold">NUESTRA BODA</p>
-            <h2 className="font-script text-5xl text-[#C8521A] leading-relaxed">Paola & Rogelio</h2>
-            <div className="w-12 border-b border-[#7A1C28]/30 mx-auto" />
+          <div className="space-y-4 max-w-xs text-center my-auto z-10">
+            <p className="font-sans text-[9px] tracking-[0.35em] text-[#B00056] uppercase font-bold">NUESTRA BODA</p>
+            
+            {/* Couple Names Serif Layout */}
+            <div className="flex flex-col items-center justify-center py-2">
+              <h2 className="font-serif text-3xl tracking-wider text-[#1A1A1A] font-bold uppercase leading-none">PAOLA</h2>
+              <span className="font-serif text-4xl text-[#B00056] font-bold italic my-1">&</span>
+              <h2 className="font-serif text-3xl tracking-wider text-[#1A1A1A] font-bold uppercase leading-none">ROGELIO</h2>
+            </div>
+            
+            <div className="w-12 border-b border-[#B00056]/30 mx-auto" />
             <p className="font-sans text-[11px] text-[#2D1810]/60 leading-relaxed font-light mt-4">
               Te invitamos a compartir con nosotros el día más importante de nuestras vidas.
             </p>
@@ -266,12 +272,12 @@ export default function Home() {
 
           {/* Button to Open & Autoplay Audio */}
           <div className="mb-8 flex flex-col items-center space-y-3 z-10">
-            <p className="font-sans text-[9px] tracking-wider text-[#7A1C28]/70 uppercase animate-pulse">
+            <p className="font-sans text-[9px] tracking-wider text-[#B00056]/80 uppercase animate-pulse">
               Toca para abrir la invitación con música
             </p>
             <button
               onClick={handleOpenInvitation}
-              className="px-8 py-3 bg-[#7A1C28] hover:bg-[#C8521A] active:scale-95 text-white text-xs font-bold uppercase tracking-widest rounded-full shadow-md hover:shadow-lg transition-all duration-300 flex items-center gap-2 cursor-pointer"
+              className="px-8 py-3 bg-[#B00056] hover:bg-[#E63917] active:scale-95 text-white text-xs font-bold uppercase tracking-widest rounded-full shadow-md hover:shadow-lg transition-all duration-300 flex items-center gap-2 cursor-pointer"
             >
               <span>Abrir Invitación</span>
               <span className="text-base">✉️</span>
@@ -295,19 +301,19 @@ export default function Home() {
             {/* Equalizer waves animation */}
             <div className="flex items-end gap-[2px] h-3 w-3.5">
               <span
-                className={`w-[2px] bg-[#7A1C28] rounded-full transition-all duration-300 ${
+                className={`w-[2px] bg-[#B00056] rounded-full transition-all duration-300 ${
                   isPlaying ? "animate-[bounce_0.8s_infinite_100ms]" : "h-1"
                 }`}
                 style={{ height: isPlaying ? undefined : "3px" }}
               />
               <span
-                className={`w-[2px] bg-[#7A1C28] rounded-full transition-all duration-300 ${
+                className={`w-[2px] bg-[#B00056] rounded-full transition-all duration-300 ${
                   isPlaying ? "animate-[bounce_0.8s_infinite_300ms]" : "h-2.5"
                 }`}
                 style={{ height: isPlaying ? undefined : "9px" }}
               />
               <span
-                className={`w-[2px] bg-[#7A1C28] rounded-full transition-all duration-300 ${
+                className={`w-[2px] bg-[#B00056] rounded-full transition-all duration-300 ${
                   isPlaying ? "animate-[bounce_0.8s_infinite_200ms]" : "h-1.5"
                 }`}
                 style={{ height: isPlaying ? undefined : "5px" }}
@@ -315,19 +321,20 @@ export default function Home() {
             </div>
 
             {isPlaying ? (
-              <Pause className="w-3.5 h-3.5 text-[#7A1C28] fill-current" />
+              <Pause className="w-3.5 h-3.5 text-[#B00056] fill-current" />
             ) : (
-              <Play className="w-3.5 h-3.5 text-[#7A1C28] fill-current translate-x-[0.5px]" />
+              <Play className="w-3.5 h-3.5 text-[#B00056] fill-current translate-x-[0.5px]" />
             )}
             
-            <Music className={`w-3 h-3 text-[#7A1C28]/60 ${isPlaying ? "animate-spin" : ""}`} style={{ animationDuration: "6s" }} />
+            <Music className={`w-3 h-3 text-[#B00056]/60 ${isPlaying ? "animate-spin" : ""}`} style={{ animationDuration: "6s" }} />
           </button>
         </div>
 
         {/* ================= HERO SECTION (PORTADA EDITORIAL) ================= */}
         <section className="flex flex-col items-center justify-between text-center min-h-[90vh] py-12 px-6 relative overflow-hidden select-none animate-fade-in-up">
-          <div className="absolute inset-4 border border-[#EFE8DE] pointer-events-none rounded-md" />
-          <div className="absolute inset-[18px] border border-dashed border-[#EFE8DE]/50 pointer-events-none rounded-md" />
+          {/* Dark border frame */}
+          <div className="absolute inset-4 border border-[#1A1A1A]/10 pointer-events-none rounded-md" />
+          <div className="absolute inset-[18px] border border-dashed border-[#1A1A1A]/5 pointer-events-none rounded-md" />
 
           {/* Falling Petals Background Overlay */}
           <div className="pointer-events-none absolute inset-0 overflow-hidden z-20">
@@ -354,116 +361,49 @@ export default function Home() {
             ))}
           </div>
 
-          {/* Floating flower petals in hero background */}
-          <div className="absolute top-24 left-10 w-8 h-8 text-[#D98282]/20 pointer-events-none animate-float select-none" style={{ animationDelay: "1s" }}>
-            <svg viewBox="0 0 24 24" className="w-full h-full fill-current">
-              <path d="M12 2a4 4 0 0 1 4 4c0 3-4 8-4 8s-4-5-4-8a4 4 0 0 1 4-4Z" />
-            </svg>
-          </div>
-          <div className="absolute bottom-32 right-12 w-6 h-6 text-[#6B7E43]/15 pointer-events-none animate-float select-none" style={{ animationDelay: "3s" }}>
-            <svg viewBox="0 0 24 24" className="w-full h-full fill-current">
-              <path d="M12 2a3 3 0 0 1 3 3c0 2.5-3 6-3 6s-3-3.5-3-3a3 3 0 0 1 3-3Z" />
-            </svg>
+          {/* Floral Folk Art Header Banner */}
+          <div className="w-full -mt-12 mb-2 z-10">
+            <img src="/flores.png" alt="Flores" className="w-full h-auto object-contain" />
           </div>
 
           {/* Heading */}
-          <div className="mt-6 flex flex-col items-center z-10 w-full">
-            <p className="font-sans text-[9px] tracking-[0.35em] text-[#7A1C28]/85 uppercase font-bold">
-              THE WEDDING OF
+          <div className="mt-2 flex flex-col items-center z-10 w-full">
+            <p className="font-sans text-[9px] tracking-[0.35em] text-[#B00056] uppercase font-bold">
+              NUESTRA BODA
             </p>
-            
-            {/* Caligraphic Monogram */}
-            <div className="relative w-14 h-14 my-4 flex items-center justify-center bg-white rounded-full border border-[#7A1C28]/20 shadow-xs hover:rotate-6 transition-transform duration-300">
-              <div className="absolute inset-[3px] rounded-full border border-dashed border-[#7A1C28]/10" />
-              <span className="font-serif text-2xl font-light text-[#7A1C28] relative -translate-x-[0.5px] -translate-y-[0.5px]">
-                P&R
-              </span>
-            </div>
           </div>
 
           {/* Names */}
-          <div className="flex flex-col items-center z-10 my-auto">
-            {isEnvelopeOpen ? (
-              <>
-                <h1 
-                  className="font-serif text-4xl tracking-wider text-[#7A1C28] font-light uppercase transition-all duration-500 hover:scale-103 cursor-default animate-title-reveal"
-                  style={{ animationDelay: "0.2s", opacity: 0 }}
-                >
-                  Paola
-                </h1>
-                <span 
-                  className="font-script text-3xl text-[#C8521A] my-1 animate-subtitle-reveal"
-                  style={{ animationDelay: "0.7s", opacity: 0 }}
-                >
-                  y
-                </span>
-                <h1 
-                  className="font-serif text-4xl tracking-wider text-[#7A1C28] font-light uppercase transition-all duration-500 hover:scale-103 cursor-default animate-title-reveal"
-                  style={{ animationDelay: "1.2s", opacity: 0 }}
-                >
-                  Rogelio
-                </h1>
-              </>
-            ) : (
-              // Fallback during server pre-rendering / closed envelope state
-              <>
-                <h1 className="font-serif text-4xl tracking-wider text-[#7A1C28] font-light uppercase">Paola</h1>
-                <span className="font-script text-3xl text-[#C8521A] my-1">y</span>
-                <h1 className="font-serif text-4xl tracking-wider text-[#7A1C28] font-light uppercase">Rogelio</h1>
-              </>
-            )}
+          <div className="flex flex-col items-center justify-center my-4 z-10 w-full px-4">
+            <h1 className="font-serif text-4xl tracking-wider text-[#1A1A1A] font-bold uppercase leading-none animate-title-reveal">PAOLA</h1>
+            <span className="font-serif text-5xl text-[#B00056] font-bold italic my-1 animate-subtitle-reveal">&</span>
+            <h1 className="font-serif text-4xl tracking-wider text-[#1A1A1A] font-bold uppercase leading-none animate-title-reveal">ROGELIO</h1>
           </div>
 
-          {/* Arch Portrait Placeholder with detailed monoline flowers */}
-          <div className="relative w-52 h-64 my-4 z-10 flex items-center justify-center p-1 bg-white rounded-t-full shadow-md border border-[#C8521A]/20 transition-transform duration-500 hover:scale-[1.02]">
-            <div className="relative w-full h-full rounded-t-full overflow-hidden flex items-center justify-center bg-[#F7F2EB]">
-              <svg viewBox="0 0 200 280" className="w-full h-full text-[#6B7E43]">
-                <defs>
-                  <linearGradient id="warm-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#F3D7D7" />
-                    <stop offset="60%" stopColor="#FAF2EB" />
-                    <stop offset="100%" stopColor="#F3D7D7" />
-                  </linearGradient>
-                </defs>
-                <rect width="200" height="280" rx="100" fill="url(#warm-grad)" />
-                
-                {/* Botanical monoline leaves vector */}
-                <path d="M100 250 C100 210, 110 160, 80 120 C70 100, 75 70, 100 30 C125 70, 130 100, 120 120 C90 160, 100 210, 100 250 Z" fill="none" stroke="#6B7E43" strokeWidth="1" strokeDasharray="3 3" />
-                <path d="M100 250 C102 210, 125 170, 140 160" fill="none" stroke="#6B7E43" strokeWidth="1" />
-                <path d="M140 160 C138 150, 148 145, 155 148 C160 150, 158 155, 140 160 Z" fill="#7A1C28" fillOpacity="0.15" stroke="#7A1C28" strokeWidth="1" />
-                
-                {/* Extra flower buds */}
-                <circle cx="140" cy="160" r="1.5" fill="#7A1C28" />
-                <path d="M115 190 C110 182, 118 175, 126 178 C130 180, 128 186, 115 190 Z" fill="#6B7E43" fillOpacity="0.15" stroke="#6B7E43" strokeWidth="1" />
-                <path d="M85 190 C90 182, 82 175, 74 178 C70 180, 72 186, 85 190 Z" fill="#6B7E43" fillOpacity="0.15" stroke="#6B7E43" strokeWidth="1" />
-                <path d="M100 250 C98 210, 75 170, 60 160" fill="none" stroke="#6B7E43" strokeWidth="1" />
-                <path d="M60 160 C62 150, 52 145, 45 148 C40 150, 42 155, 60 160 Z" fill="#7A1C28" fillOpacity="0.15" stroke="#7A1C28" strokeWidth="1" />
-                <circle cx="60" cy="160" r="1.5" fill="#7A1C28" />
-                <circle cx="100" cy="65" r="2.5" fill="#7A1C28" />
-              </svg>
+          {/* Date Block */}
+          <div className="my-4 z-10 flex flex-col items-center">
+            <span className="font-sans text-[10px] tracking-[0.25em] text-[#1A1A1A]/60 uppercase font-bold mb-1.5">
+              . SÁBADO .
+            </span>
+            <div className="w-full flex items-center justify-center gap-6 py-2 border-y border-[#1A1A1A]/20 text-lg font-bold tracking-widest text-[#1A1A1A] font-serif min-w-[260px]">
+              <span>NOV</span>
+              <span className="text-2xl font-extrabold text-[#B00056]">14</span>
+              <span>2026</span>
             </div>
-          </div>
-
-          {/* Date Badge */}
-          <div className="mb-4 z-10">
-            <div className="flex items-center justify-center gap-3 py-1.5 px-5 bg-white border border-[#EFE8DE] rounded-full font-serif text-xs font-semibold tracking-widest text-[#7A1C28] shadow-xs hover:scale-105 active:scale-97 transition-all duration-300 cursor-pointer">
-              <span>SÁBADO</span>
-              <span className="w-px h-3.5 bg-[#7A1C28]/20" />
-              <span className="text-[#C8521A] text-sm">14</span>
-              <span className="w-px h-3.5 bg-[#7A1C28]/20" />
-              <span>NOVIEMBRE 2026</span>
-            </div>
+            <span className="font-sans text-[10px] tracking-[0.2em] text-[#1A1A1A]/60 uppercase font-bold mt-1.5">
+              . 6:00 PM .
+            </span>
           </div>
 
           {/* Quote */}
-          <div className="mb-6 px-4 z-10">
-            <p className="font-script text-2.5xl text-[#7A1C28]">
+          <div className="mb-4 px-4 z-10">
+            <p className="font-script text-2.5xl text-[#B00056]">
               "El amor nunca deja de ser."
             </p>
           </div>
 
           {/* Bounce indicator */}
-          <div className="absolute bottom-2.5 flex flex-col items-center text-[#7A1C28]/40 animate-bounce">
+          <div className="absolute bottom-2.5 flex flex-col items-center text-[#B00056]/30 animate-bounce">
             <svg className="w-4 h-4 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
               <path d="M19 9l-7 7-7-7" />
             </svg>
@@ -477,19 +417,19 @@ export default function Home() {
             <svg viewBox="0 0 100 100" className="w-full h-full fill-none stroke-current stroke-1">
               <path d="M 0 0 C 30 10, 45 35, 35 60" />
               <path d="M 35 60 C 30 50, 40 48, 48 52 C 38 40, 30 30, 0 0 Z" fill="currentColor" fillOpacity="0.05" />
-              <circle cx="48" cy="52" r="1.5" fill="#7A1C28" />
+              <circle cx="48" cy="52" r="1.5" fill="#B00056" />
             </svg>
           </div>
           <div className="absolute bottom-0 right-0 w-24 h-24 text-[#6B7E43]/15 rotate-180 pointer-events-none select-none animate-float" style={{ animationDelay: "2s" }}>
             <svg viewBox="0 0 100 100" className="w-full h-full fill-none stroke-current stroke-1">
               <path d="M 0 0 C 30 10, 45 35, 35 60" />
               <path d="M 35 60 C 30 50, 40 48, 48 52 C 38 40, 30 30, 0 0 Z" fill="currentColor" fillOpacity="0.05" />
-              <circle cx="48" cy="52" r="1.5" fill="#7A1C28" />
+              <circle cx="48" cy="52" r="1.5" fill="#B00056" />
             </svg>
           </div>
 
           <div className="relative z-10 max-w-xs mx-auto text-center space-y-5">
-            <span className="font-script text-4xl text-[#C8521A] block scroll-reveal-title">
+            <span className="font-script text-4xl text-[#E63917] block scroll-reveal-title">
               Nuestra Historia
             </span>
             
@@ -501,7 +441,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="py-1 flex justify-center text-[#7A1C28]/40 animate-pulse">
+            <div className="py-1 flex justify-center text-[#B00056]/40 animate-pulse">
               <Heart className="w-4 h-4 fill-current" />
             </div>
 
@@ -529,11 +469,11 @@ export default function Home() {
           </div>
 
           <div className="text-center mb-10 relative z-10">
-            <span className="font-script text-4xl text-[#C8521A] block scroll-reveal-title">
+            <span className="font-script text-4xl text-[#E63917] block scroll-reveal-title">
               El Itinerario
             </span>
-            <p className="font-sans text-[9px] tracking-[0.2em] text-[#7A1C28]/60 uppercase mt-1 font-bold">
-              WEDDING PROGRAM
+            <p className="font-sans text-[9px] tracking-[0.2em] text-[#B00056]/60 uppercase mt-1 font-bold">
+              PROGRAMA DE LA BODA
             </p>
           </div>
 
@@ -560,72 +500,40 @@ export default function Home() {
               </svg>
             </div>
 
-            <div className="border border-[#7A1C28]/15 rounded-t-full px-6 py-12 bg-white shadow-xs relative transition-transform duration-500 hover:scale-[1.01] scroll-reveal-card">
-              <div className="absolute inset-1.5 border border-dashed border-[#7A1C28]/10 rounded-t-full pointer-events-none" />
+            <div className="border border-[#B00056]/15 rounded-t-full px-6 py-12 bg-white shadow-xs relative transition-transform duration-500 hover:scale-[1.01] scroll-reveal-card">
+              <div className="absolute inset-1.5 border border-dashed border-[#B00056]/10 rounded-t-full pointer-events-none" />
 
               {/* Timeline list */}
               <div className="relative space-y-8 z-10 text-left">
                 
                 {/* Event 1 */}
                 <div className="flex gap-4 relative group">
-                  <div className="absolute left-[15px] top-8 bottom-[-32px] w-px border-l border-dashed border-[#7A1C28]/20" />
-                  <div className="w-8 h-8 rounded-full bg-[#FDFBF7] border border-[#EFE8DE] flex items-center justify-center text-[#7A1C28] shrink-0 shadow-xs transition-all duration-300 group-hover:scale-115 group-hover:bg-[#FDFBF7] group-hover:shadow-md">
+                  <div className="absolute left-[15px] top-8 bottom-[-32px] w-px border-l border-dashed border-[#B00056]/20" />
+                  <div className="w-8 h-8 rounded-full bg-[#FDFBF7] border border-[#EFE8DE] flex items-center justify-center text-[#B00056] shrink-0 shadow-xs transition-all duration-300 group-hover:scale-115 group-hover:bg-[#FDFBF7] group-hover:shadow-md">
                     <Church className="w-4 h-4 text-[#6B7E43]" />
                   </div>
                   <div className="space-y-0.5">
-                    <span className="font-serif text-[10px] font-bold text-[#7A1C28] bg-[#7A1C28]/5 px-2 py-0.5 rounded-full flex items-center gap-1 w-fit">
+                    <span className="font-serif text-[10px] font-bold text-[#B00056] bg-[#B00056]/5 px-2 py-0.5 rounded-full flex items-center gap-1 w-fit">
                       <Clock className="w-3 h-3 text-[#E59834]" />
-                      4:30 PM
+                      6:00 PM - 7:00 PM
                     </span>
-                    <h4 className="font-serif text-sm font-semibold text-[#7A1C28]">Ceremonia Religiosa</h4>
+                    <h4 className="font-serif text-sm font-semibold text-[#B00056]">Ceremonia Religiosa</h4>
                     <p className="font-sans text-[11px] text-[#2D1810]/70 font-light">Enlace y bendición sacramental.</p>
                   </div>
                 </div>
 
                 {/* Event 2 */}
                 <div className="flex gap-4 relative group">
-                  <div className="absolute left-[15px] top-8 bottom-[-32px] w-px border-l border-dashed border-[#7A1C28]/20" />
-                  <div className="w-8 h-8 rounded-full bg-[#FDFBF7] border border-[#EFE8DE] flex items-center justify-center text-[#7A1C28] shrink-0 shadow-xs transition-all duration-300 group-hover:scale-115 group-hover:bg-[#FDFBF7] group-hover:shadow-md">
+                  <div className="w-8 h-8 rounded-full bg-[#FDFBF7] border border-[#EFE8DE] flex items-center justify-center text-[#B00056] shrink-0 shadow-xs transition-all duration-300 group-hover:scale-115 group-hover:bg-[#FDFBF7] group-hover:shadow-md">
                     <Sparkles className="w-4 h-4 text-[#E59834]" />
                   </div>
                   <div className="space-y-0.5">
-                    <span className="font-serif text-[10px] font-bold text-[#7A1C28] bg-[#7A1C28]/5 px-2 py-0.5 rounded-full flex items-center gap-1 w-fit">
+                    <span className="font-serif text-[10px] font-bold text-[#B00056] bg-[#B00056]/5 px-2 py-0.5 rounded-full flex items-center gap-1 w-fit">
                       <Clock className="w-3 h-3 text-[#E59834]" />
-                      6:30 PM
+                      7:00 PM - 12:00 AM
                     </span>
-                    <h4 className="font-serif text-sm font-semibold text-[#7A1C28]">Recepción & Cóctel</h4>
-                    <p className="font-sans text-[11px] text-[#2D1810]/70 font-light">Bebidas de bienvenida y socialización.</p>
-                  </div>
-                </div>
-
-                {/* Event 3 */}
-                <div className="flex gap-4 relative group">
-                  <div className="absolute left-[15px] top-8 bottom-[-32px] w-px border-l border-dashed border-[#7A1C28]/20" />
-                  <div className="w-8 h-8 rounded-full bg-[#FDFBF7] border border-[#EFE8DE] flex items-center justify-center text-[#7A1C28] shrink-0 shadow-xs transition-all duration-300 group-hover:scale-115 group-hover:bg-[#FDFBF7] group-hover:shadow-md">
-                    <Utensils className="w-4 h-4 text-[#C8521A]" />
-                  </div>
-                  <div className="space-y-0.5">
-                    <span className="font-serif text-[10px] font-bold text-[#7A1C28] bg-[#7A1C28]/5 px-2 py-0.5 rounded-full flex items-center gap-1 w-fit">
-                      <Clock className="w-3 h-3 text-[#E59834]" />
-                      8:00 PM
-                    </span>
-                    <h4 className="font-serif text-sm font-semibold text-[#7A1C28]">Banquete & Brindis</h4>
-                    <p className="font-sans text-[11px] text-[#2D1810]/70 font-light">Cena formal, postres y brindis de honor.</p>
-                  </div>
-                </div>
-
-                {/* Event 4 */}
-                <div className="flex gap-4 relative group">
-                  <div className="w-8 h-8 rounded-full bg-[#FDFBF7] border border-[#EFE8DE] flex items-center justify-center text-[#7A1C28] shrink-0 shadow-xs transition-all duration-300 group-hover:scale-115 group-hover:bg-[#FDFBF7] group-hover:shadow-md">
-                    <Music className="w-4 h-4 text-[#7A1C28]" />
-                  </div>
-                  <div className="space-y-0.5">
-                    <span className="font-serif text-[10px] font-bold text-[#7A1C28] bg-[#7A1C28]/5 px-2 py-0.5 rounded-full flex items-center gap-1 w-fit">
-                      <Clock className="w-3 h-3 text-[#E59834]" />
-                      9:30 PM
-                    </span>
-                    <h4 className="font-serif text-sm font-semibold text-[#7A1C28]">Fiesta & Baile</h4>
-                    <p className="font-sans text-[11px] text-[#2D1810]/70 font-light">Apertura de pista y festejo.</p>
+                    <h4 className="font-serif text-sm font-semibold text-[#B00056]">Banquete & Fiesta</h4>
+                    <p className="font-sans text-[11px] text-[#2D1810]/70 font-light">Cena, brindis de honor y gran festejo.</p>
                   </div>
                 </div>
 
@@ -636,10 +544,10 @@ export default function Home() {
 
         {/* ================= DETALLES & VESTIMENTA ================= */}
         <section className="py-16 px-6 bg-white relative border-t border-[#EFE8DE] overflow-hidden">
-          <div className="absolute top-4 left-4 w-6 h-6 border-t border-l border-[#7A1C28]/10" />
-          <div className="absolute top-4 right-4 w-6 h-6 border-t border-r border-[#7A1C28]/10" />
-          <div className="absolute bottom-4 left-4 w-6 h-6 border-b border-l border-[#7A1C28]/10" />
-          <div className="absolute bottom-4 right-4 w-6 h-6 border-b border-r border-[#7A1C28]/10" />
+          <div className="absolute top-4 left-4 w-6 h-6 border-t border-l border-[#B00056]/10" />
+          <div className="absolute top-4 right-4 w-6 h-6 border-t border-r border-[#B00056]/10" />
+          <div className="absolute bottom-4 left-4 w-6 h-6 border-b border-l border-[#B00056]/10" />
+          <div className="absolute bottom-4 right-4 w-6 h-6 border-b border-r border-[#B00056]/10" />
 
           {/* Delicate flower drawing watermark */}
           <div className="absolute inset-0 flex items-center justify-center text-[#6B7E43]/5 pointer-events-none select-none animate-pulse-slow">
@@ -654,11 +562,11 @@ export default function Home() {
 
           {/* Header */}
           <div className="text-center mb-10 relative z-10">
-            <span className="font-script text-4xl text-[#C8521A] block scroll-reveal-title">
+            <span className="font-script text-4xl text-[#E63917] block scroll-reveal-title">
               Código de Vestimenta
             </span>
-            <p className="font-sans text-[9px] tracking-[0.2em] text-[#7A1C28]/60 uppercase mt-1 font-bold">
-              THE DETAILS
+            <p className="font-sans text-[9px] tracking-[0.2em] text-[#B00056]/60 uppercase mt-1 font-bold">
+              DETALLES DEL EVENTO
             </p>
           </div>
 
@@ -666,36 +574,36 @@ export default function Home() {
             
             {/* Outline vectors */}
             <div className="flex justify-center gap-6">
-              {/* Suit SVG */}
-              <div className="w-14 h-14 bg-[#FDFBF7] rounded-full border border-[#EFE8DE] flex items-center justify-center text-[#7A1C28] shadow-xs hover:scale-105 transition-transform duration-300">
+              {/* Hat (Sombrero) SVG */}
+              <div className="w-14 h-14 bg-[#FDFBF7] rounded-full border border-[#EFE8DE] flex items-center justify-center text-[#B00056] shadow-xs hover:scale-105 transition-transform duration-300">
                 <svg viewBox="0 0 100 100" className="w-7 h-7 fill-none stroke-current stroke-[2.5]">
-                  <path d="M 22 22 L 50 40 L 78 22 L 68 85 L 32 85 Z" stroke="#6B7E43" />
-                  <path d="M 50 40 L 46 55 L 50 63 L 54 55 Z" fill="#7A1C28" />
-                  <path d="M 22 22 L 35 44 M 78 22 L 65 44" stroke="#6B7E43" />
+                  <path d="M 35 25 L 65 25 L 62 65 L 38 65 Z" stroke="#6B7E43" />
+                  <path d="M 38 65 L 39 57 L 61 57 L 62 65" stroke="#B00056" />
+                  <path d="M 20 65 C 25 63, 75 63, 80 65 C 85 66, 85 69, 80 70 C 75 72, 25 72, 20 70 C 15 69, 15 66, 20 65 Z" stroke="#6B7E43" />
                 </svg>
               </div>
 
               {/* Dress Gown SVG */}
-              <div className="w-14 h-14 bg-[#FDFBF7] rounded-full border border-[#EFE8DE] flex items-center justify-center text-[#7A1C28] shadow-xs hover:scale-105 transition-transform duration-300">
+              <div className="w-14 h-14 bg-[#FDFBF7] rounded-full border border-[#EFE8DE] flex items-center justify-center text-[#B00056] shadow-xs hover:scale-105 transition-transform duration-300">
                 <svg viewBox="0 0 100 100" className="w-7 h-7 fill-none stroke-current stroke-[2.5]">
-                  <path d="M 40 20 C 45 35, 30 55, 25 85 L 75 85 C 70 55, 55 35, 60 20 Z" stroke="#7A1C28" fill="#F3D7D7" fillOpacity="0.4" />
-                  <path d="M 40 20 C 44 14, 56 14, 60 20" stroke="#7A1C28" />
+                  <path d="M 40 20 C 45 35, 30 55, 25 85 L 75 85 C 70 55, 55 35, 60 20 Z" stroke="#B00056" fill="#F3D7D7" fillOpacity="0.4" />
+                  <path d="M 40 20 C 44 14, 56 14, 60 20" stroke="#B00056" />
                 </svg>
               </div>
             </div>
 
             <div className="space-y-1">
-              <h4 className="font-serif text-sm font-bold uppercase tracking-widest text-[#7A1C28]">
-                Rigurosa Etiqueta / Formal
+              <h4 className="font-serif text-sm font-bold uppercase tracking-widest text-[#B00056]">
+                Formal
               </h4>
               <p className="font-sans text-xs text-[#2D1810]/70 leading-relaxed font-light">
-                Hombres de traje oscuro / Mujeres de vestido largo. Agradecemos evitar vestir de color blanco.
+                Vestimenta formal. Agradecemos evitar vestir de color blanco.
               </p>
             </div>
 
             {/* Suggested Palette */}
             <div className="py-3 bg-[#FDFBF7]/85 border border-[#EFE8DE] rounded-lg p-3">
-              <p className="text-[9px] uppercase tracking-wider font-semibold text-[#7A1C28]/70 mb-2 font-bold font-serif">
+              <p className="text-[9px] uppercase tracking-wider font-semibold text-[#B00056]/70 mb-2 font-bold font-serif">
                 Guía de Color para Invitados
               </p>
               <div className="flex justify-center gap-2">
@@ -712,7 +620,7 @@ export default function Home() {
 
             {/* Gift Registry */}
             <div className="space-y-3">
-              <h4 className="font-serif text-sm font-bold uppercase tracking-widest text-[#7A1C28]">
+              <h4 className="font-serif text-sm font-bold uppercase tracking-widest text-[#B00056]">
                 Mesa de Regalos
               </h4>
               <p className="font-sans text-xs text-[#2D1810]/70 leading-relaxed font-light">
@@ -720,19 +628,19 @@ export default function Home() {
               </p>
 
               {/* Transfer account details card */}
-              <div className="p-3.5 rounded-lg border border-[#EFE8DE] bg-[#FAF8F5] text-left space-y-2 relative transition-all duration-300 hover:shadow-xs hover:border-[#7A1C28]/30">
-                <div className="flex justify-between items-center text-[9px] font-semibold text-[#7A1C28]/60">
+              <div className="p-3.5 rounded-lg border border-[#EFE8DE] bg-[#FAF8F5] text-left space-y-2 relative transition-all duration-300 hover:shadow-xs hover:border-[#B00056]/30">
+                <div className="flex justify-between items-center text-[9px] font-semibold text-[#B00056]/60">
                   <span>DATOS DE TRANSFERENCIA</span>
-                  <span className="px-1.5 py-0.5 bg-[#7A1C28]/10 text-[#7A1C28] rounded font-semibold text-[8px]">CLABE</span>
+                  <span className="px-1.5 py-0.5 bg-[#B00056]/10 text-[#B00056] rounded font-semibold text-[8px]">CLABE</span>
                 </div>
                 <div className="text-xs text-[#2D1810] space-y-1">
                   <p className="font-bold">Banco Nacional</p>
                   <p className="text-[11px] text-[#2D1810]/70">Titular: Paola & Rogelio Boda</p>
-                  <div className="text-[11px] font-mono bg-white border border-[#EFE8DE] px-2 py-1.5 rounded flex justify-between items-center mt-1 focus-within:ring-1 focus-within:ring-[#C8521A]">
+                  <div className="text-[11px] font-mono bg-white border border-[#EFE8DE] px-2 py-1.5 rounded flex justify-between items-center mt-1 focus-within:ring-1 focus-within:ring-[#E63917]">
                     <span>CLABE: {clabeNumber}</span>
                     <button
                       onClick={handleCopyCLABE}
-                      className="p-1 hover:bg-slate-100 rounded text-[#C8521A] transition-colors active:scale-90"
+                      className="p-1 hover:bg-slate-100 rounded text-[#E63917] transition-colors active:scale-90"
                       title="Copiar CLABE"
                     >
                       {copied ? <Check className="w-3.5 h-3.5 text-green-600 animate-pulse" /> : <Copy className="w-3.5 h-3.5" />}
@@ -747,7 +655,7 @@ export default function Home() {
 
           {/* Floating Toast Notification */}
           <div
-            className={`fixed bottom-6 left-1/2 -translate-x-1/2 z-50 px-4 py-2 bg-[#7A1C28] text-white text-xs tracking-wider rounded-full shadow-lg border border-white/10 flex items-center gap-1.5 transition-all duration-300 uppercase ${
+            className={`fixed bottom-6 left-1/2 -translate-x-1/2 z-50 px-4 py-2 bg-[#B00056] text-white text-xs tracking-wider rounded-full shadow-lg border border-white/10 flex items-center gap-1.5 transition-all duration-300 uppercase ${
               copied ? "opacity-100 translate-y-0 scale-100 animate-pulse" : "opacity-0 translate-y-4 scale-95 pointer-events-none"
             }`}
           >
@@ -760,11 +668,11 @@ export default function Home() {
         {/* ================= UBICACIONES ================= */}
         <section className="py-16 px-6 bg-[#F7F2EB] relative border-t border-[#EFE8DE]">
           <div className="text-center mb-10">
-            <span className="font-script text-4xl text-[#C8521A] block scroll-reveal-title">
+            <span className="font-script text-4xl text-[#E63917] block scroll-reveal-title">
               Ubicaciones
             </span>
-            <p className="font-sans text-[9px] tracking-[0.2em] text-[#7A1C28]/60 uppercase mt-1 font-semibold">
-              THE VENUES
+            <p className="font-sans text-[9px] tracking-[0.2em] text-[#B00056]/60 uppercase mt-1 font-semibold">
+              UBICACIONES
             </p>
           </div>
 
@@ -782,25 +690,25 @@ export default function Home() {
                     <path d="M 50 20 L 50 5" />
                     <path d="M 45 10 L 55 10" />
                     {/* Tiny monoline rose bud */}
-                    <path d="M 85 45 C 90 40, 92 48, 85 45 Z" fill="#7A1C28" fillOpacity="0.2" />
+                    <path d="M 85 45 C 90 40, 92 48, 85 45 Z" fill="#B00056" fillOpacity="0.2" />
                   </svg>
                 </div>
                 <div className="relative z-10">
-                  <span className="text-[9px] font-bold text-[#7A1C28] block uppercase">4:30 PM</span>
-                  <h4 className="font-serif text-base font-semibold text-[#7A1C28]">Templo Expiatorio</h4>
+                  <span className="text-[9px] font-bold text-[#B00056] block uppercase">14 de Noviembre 2026</span>
+                  <h4 className="font-serif text-base font-semibold text-[#B00056]">Gómez Farías, Tamaulipas</h4>
                 </div>
               </div>
               <div className="p-4 space-y-3.5">
                 <p className="font-sans text-xs text-[#2D1810]/70 font-light leading-relaxed">
-                  Av. Francisco I. Madero 950, Zona Centro, Guadalajara, Jal.
+                  Zona Centro, Gómez Farías, Tamaulipas.
                 </p>
                 <a
-                  href="https://maps.google.com/?q=Templo+Expiatorio+Guadalajara"
+                  href="https://maps.google.com/?q=Gomez+Farias+Tamaulipas"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-1.5 py-2.5 rounded border border-[#7A1C28]/15 text-[10px] font-bold uppercase tracking-wider text-[#7A1C28] bg-white hover:bg-slate-50 transition-all w-full shadow-xs active:scale-98"
+                  className="flex items-center justify-center gap-1.5 py-2.5 rounded border border-[#B00056]/15 text-[10px] font-bold uppercase tracking-wider text-[#B00056] bg-white hover:bg-slate-50 transition-all w-full shadow-xs active:scale-98"
                 >
-                  <Navigation className="w-3.5 h-3.5 text-[#C8521A]" />
+                  <Navigation className="w-3.5 h-3.5 text-[#E63917]" />
                   Abrir en Google Maps
                 </a>
               </div>
@@ -823,21 +731,21 @@ export default function Home() {
                   </svg>
                 </div>
                 <div className="relative z-10">
-                  <span className="text-[9px] font-bold text-[#7A1C28] block uppercase">6:30 PM</span>
-                  <h4 className="font-serif text-base font-semibold text-[#7A1C28]">Hacienda La Solariega</h4>
+                  <span className="text-[9px] font-bold text-[#B00056] block uppercase">7:00 PM</span>
+                  <h4 className="font-serif text-base font-semibold text-[#B00056]">Hostal Casa de Piedra</h4>
                 </div>
               </div>
               <div className="p-4 space-y-3.5">
                 <p className="font-sans text-xs text-[#2D1810]/70 font-light leading-relaxed">
-                  Km 4.5 Carretera Huimilpan, El Vegil, Querétaro, Qro.
+                  Calle Hidalgo s/n (a 150m de la Presidencia Municipal), Gómez Farías, Tamaulipas.
                 </p>
                 <a
-                  href="https://maps.google.com/?q=Hacienda+La+Solariega"
+                  href="https://maps.app.goo.gl/nMLmNS6j987hkA1z7?g_st=iw"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-1.5 py-2.5 rounded border border-[#7A1C28]/15 text-[10px] font-bold uppercase tracking-wider text-[#7A1C28] bg-white hover:bg-slate-50 transition-all w-full shadow-xs active:scale-98"
+                  className="flex items-center justify-center gap-1.5 py-2.5 rounded border border-[#B00056]/15 text-[10px] font-bold uppercase tracking-wider text-[#B00056] bg-white hover:bg-slate-50 transition-all w-full shadow-xs active:scale-98"
                 >
-                  <Navigation className="w-3.5 h-3.5 text-[#C8521A]" />
+                  <Navigation className="w-3.5 h-3.5 text-[#E63917]" />
                   Abrir en Google Maps
                 </a>
               </div>
@@ -861,11 +769,11 @@ export default function Home() {
           </div>
 
           <div className="text-center mb-10 relative z-10">
-            <span className="font-script text-4xl text-[#C8521A] block scroll-reveal-title">
+            <span className="font-script text-4xl text-[#E63917] block scroll-reveal-title">
               Momentos Guardados
             </span>
-            <p className="font-sans text-[9px] tracking-[0.2em] text-[#7A1C28]/60 uppercase mt-1 font-bold font-serif">
-              PHOTO GALLERY
+            <p className="font-sans text-[9px] tracking-[0.2em] text-[#B00056]/60 uppercase mt-1 font-bold font-serif">
+              GALERÍA DE FOTOS
             </p>
           </div>
 
@@ -874,53 +782,53 @@ export default function Home() {
             
             {/* Photo 1: Vertical Tall */}
             <div className="col-span-2 row-span-2 h-72 rounded-lg overflow-hidden border border-[#EFE8DE] shadow-xs relative group bg-gradient-to-br from-[#FAF2EB] via-[#F3D7D7] to-[#D98282] flex items-center justify-center transition-all duration-300 hover:scale-[1.01] hover:shadow-sm cursor-pointer scroll-reveal-card">
-              <div className="absolute inset-0 bg-[#7A1C28]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+              <div className="absolute inset-0 bg-[#B00056]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
               {/* Botanical Overlay Drawing */}
-              <div className="text-[#7A1C28]/25 w-24 h-24 absolute pointer-events-none select-none animate-float">
+              <div className="text-[#B00056]/25 w-24 h-24 absolute pointer-events-none select-none animate-float">
                 <svg viewBox="0 0 100 100" className="w-full h-full fill-none stroke-current stroke-1">
                   <path d="M 50 10 C 60 30, 40 50, 50 90 M 50 50 C 70 40, 80 60, 90 70 M 50 30 C 30 20, 20 40, 10 50" />
                 </svg>
               </div>
-              <div className="relative z-10 p-2.5 bg-white/90 rounded-full shadow-sm text-[#7A1C28] group-hover:scale-110 transition-transform duration-500">
+              <div className="relative z-10 p-2.5 bg-white/90 rounded-full shadow-sm text-[#B00056] group-hover:scale-110 transition-transform duration-500">
                 <Camera className="w-5 h-5" />
               </div>
             </div>
 
             {/* Photo 2: Small Square */}
             <div className="col-span-1 row-span-1 h-32 rounded-lg overflow-hidden border border-[#EFE8DE] shadow-xs relative group bg-gradient-to-br from-[#FDFBF7] via-[#F3D7D7] to-[#E59834]/30 flex items-center justify-center transition-all duration-300 hover:scale-[1.02] hover:shadow-xs cursor-pointer scroll-reveal-card">
-              <div className="absolute inset-0 bg-[#7A1C28]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+              <div className="absolute inset-0 bg-[#B00056]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
               <div className="text-[#6B7E43]/20 w-12 h-12 absolute pointer-events-none select-none animate-float" style={{ animationDelay: "1.5s" }}>
                 <svg viewBox="0 0 50 50" className="w-full h-full fill-none stroke-current stroke-1">
                   <path d="M 25 5 C 30 15, 20 25, 25 45" />
                 </svg>
               </div>
-              <div className="relative z-10 p-2 bg-white/90 rounded-full shadow-sm text-[#7A1C28] group-hover:scale-110 transition-transform duration-500">
+              <div className="relative z-10 p-2 bg-white/90 rounded-full shadow-sm text-[#B00056] group-hover:scale-110 transition-transform duration-500">
                 <Camera className="w-4 h-4" />
               </div>
             </div>
 
             {/* Photo 3: Small Square */}
             <div className="col-span-1 row-span-1 h-32 rounded-lg overflow-hidden border border-[#EFE8DE] shadow-xs relative group bg-gradient-to-br from-[#FAF2EB] via-[#FAF8F5] to-[#6B7E43]/20 flex items-center justify-center transition-all duration-300 hover:scale-[1.02] hover:shadow-xs cursor-pointer scroll-reveal-card">
-              <div className="absolute inset-0 bg-[#7A1C28]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+              <div className="absolute inset-0 bg-[#B00056]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
               <div className="text-[#6B7E43]/20 w-12 h-12 absolute pointer-events-none select-none animate-float" style={{ animationDelay: "3s" }}>
                 <svg viewBox="0 0 50 50" className="w-full h-full fill-none stroke-current stroke-1">
                   <path d="M 25 5 C 30 15, 20 25, 25 45" />
                 </svg>
               </div>
-              <div className="relative z-10 p-2 bg-white/90 rounded-full shadow-sm text-[#7A1C28] group-hover:scale-110 transition-transform duration-500">
+              <div className="relative z-10 p-2 bg-white/90 rounded-full shadow-sm text-[#B00056] group-hover:scale-110 transition-transform duration-500">
                 <Camera className="w-4 h-4" />
               </div>
             </div>
 
             {/* Photo 4: Horizontal Wide */}
             <div className="col-span-3 row-span-1 h-40 rounded-lg overflow-hidden border border-[#EFE8DE] shadow-xs relative group bg-gradient-to-br from-[#FDFBF7] via-[#FAF2EB] to-[#D98282]/40 flex items-center justify-center transition-all duration-300 hover:scale-[1.01] hover:shadow-sm cursor-pointer scroll-reveal-card">
-              <div className="absolute inset-0 bg-[#7A1C28]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-              <div className="text-[#7A1C28]/15 w-36 h-12 absolute pointer-events-none select-none animate-float" style={{ animationDelay: "2s" }}>
+              <div className="absolute inset-0 bg-[#B00056]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+              <div className="text-[#B00056]/15 w-36 h-12 absolute pointer-events-none select-none animate-float" style={{ animationDelay: "2s" }}>
                 <svg viewBox="0 0 150 50" className="w-full h-full fill-none stroke-current stroke-1">
                   <path d="M 10 25 C 50 25, 100 25, 140 25 M 30 25 C 30 15, 45 15, 45 25 M 105 25 C 105 15, 120 15, 120 25" />
                 </svg>
               </div>
-              <div className="relative z-10 p-2.5 bg-white/90 rounded-full shadow-sm text-[#7A1C28] group-hover:scale-110 transition-transform duration-500">
+              <div className="relative z-10 p-2.5 bg-white/90 rounded-full shadow-sm text-[#B00056] group-hover:scale-110 transition-transform duration-500">
                 <Camera className="w-5 h-5" />
               </div>
             </div>
@@ -946,10 +854,10 @@ export default function Home() {
 
           {/* Header */}
           <div className="text-center mb-8 relative z-10">
-            <span className="font-script text-4xl text-[#C8521A] block scroll-reveal-title">
+            <span className="font-script text-4xl text-[#E63917] block scroll-reveal-title">
               Confirma tu Asistencia
             </span>
-            <p className="font-sans text-[10px] tracking-[0.2em] text-[#7A1C28]/60 uppercase mt-2 font-semibold">
+            <p className="font-sans text-[10px] tracking-[0.2em] text-[#B00056]/60 uppercase mt-2 font-semibold">
               FAVOR DE CONFIRMAR ANTES DEL 14 DE OCTUBRE 2026
             </p>
             <div className="w-10 my-3 border-b border-[#EFE8DE] mx-auto" />
@@ -959,7 +867,7 @@ export default function Home() {
             
             {/* Name */}
             <div className="flex flex-col">
-              <label htmlFor="rsvpName" className="text-[10px] font-bold uppercase tracking-wider text-[#7A1C28] mb-2 font-sans">
+              <label htmlFor="rsvpName" className="text-[10px] font-bold uppercase tracking-wider text-[#B00056] mb-2 font-sans">
                 Nombre Completo
               </label>
               <input
@@ -969,13 +877,13 @@ export default function Home() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Ej. Juan Carlos Ramos"
-                className="px-4 py-2.5 rounded bg-[#FDFBF7] border border-[#EFE8DE] text-[#2D1810] text-xs font-sans focus:outline-hidden focus:border-[#C8521A] focus:ring-1 focus:ring-[#C8521A] transition-all shadow-xs"
+                className="px-4 py-2.5 rounded bg-[#FDFBF7] border border-[#EFE8DE] text-[#2D1810] text-xs font-sans focus:outline-hidden focus:border-[#E63917] focus:ring-1 focus:ring-[#E63917] transition-all shadow-xs"
               />
             </div>
 
             {/* Attendance Radios */}
             <div className="flex flex-col">
-              <label className="text-[10px] font-bold uppercase tracking-wider text-[#7A1C28] mb-2 font-sans">
+              <label className="text-[10px] font-bold uppercase tracking-wider text-[#B00056] mb-2 font-sans">
                 ¿Asistirás?
               </label>
               <div className="grid grid-cols-2 gap-3">
@@ -984,8 +892,8 @@ export default function Home() {
                   onClick={() => setAttendance("yes")}
                   className={`py-2.5 rounded border text-[10px] font-bold uppercase tracking-wider transition-all duration-300 ${
                     attendance === "yes"
-                      ? "bg-[#7A1C28] border-[#7A1C28] text-white shadow-md scale-[1.01]"
-                      : "bg-[#FDFBF7] border-[#EFE8DE] text-[#7A1C28] hover:bg-[#FAF2EB]"
+                      ? "bg-[#B00056] border-[#B00056] text-white shadow-md scale-[1.01]"
+                      : "bg-[#FDFBF7] border-[#EFE8DE] text-[#B00056] hover:bg-[#FAF2EB]"
                   }`}
                 >
                   ¡Sí, con mucho gusto!
@@ -995,8 +903,8 @@ export default function Home() {
                   onClick={() => setAttendance("no")}
                   className={`py-2.5 rounded border text-[10px] font-bold uppercase tracking-wider transition-all duration-300 ${
                     attendance === "no"
-                      ? "bg-[#7A1C28] border-[#7A1C28] text-white shadow-md scale-[1.01]"
-                      : "bg-[#FDFBF7] border-[#EFE8DE] text-[#7A1C28] hover:bg-[#FAF2EB]"
+                      ? "bg-[#B00056] border-[#B00056] text-white shadow-md scale-[1.01]"
+                      : "bg-[#FDFBF7] border-[#EFE8DE] text-[#B00056] hover:bg-[#FAF2EB]"
                   }`}
                 >
                   Lo siento, no podré
@@ -1009,14 +917,14 @@ export default function Home() {
               <div className="space-y-5 animate-[fadeIn_0.3s_ease-out_forwards]">
                 {/* Number of passes */}
                 <div className="flex flex-col">
-                  <label htmlFor="rsvpGuests" className="text-[10px] font-bold uppercase tracking-wider text-[#7A1C28] mb-2 font-sans">
+                  <label htmlFor="rsvpGuests" className="text-[10px] font-bold uppercase tracking-wider text-[#B00056] mb-2 font-sans">
                     Número de pases
                   </label>
                   <select
                     id="rsvpGuests"
                     value={guests}
                     onChange={(e) => setGuests(e.target.value)}
-                    className="px-4 py-2.5 rounded bg-[#FDFBF7] border border-[#EFE8DE] text-[#2D1810] text-xs font-sans focus:outline-hidden focus:border-[#C8521A] focus:ring-1 focus:ring-[#C8521A] transition-all shadow-xs appearance-none"
+                    className="px-4 py-2.5 rounded bg-[#FDFBF7] border border-[#EFE8DE] text-[#2D1810] text-xs font-sans focus:outline-hidden focus:border-[#E63917] focus:ring-1 focus:ring-[#E63917] transition-all shadow-xs appearance-none"
                     style={{
                       backgroundImage: `url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237A1C28' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e")`,
                       backgroundRepeat: "no-repeat",
@@ -1033,7 +941,7 @@ export default function Home() {
 
                 {/* Diet notes */}
                 <div className="flex flex-col">
-                  <label htmlFor="rsvpDiet" className="text-[10px] font-bold uppercase tracking-wider text-[#7A1C28] mb-2 font-sans">
+                  <label htmlFor="rsvpDiet" className="text-[10px] font-bold uppercase tracking-wider text-[#B00056] mb-2 font-sans">
                     Mensaje o Alergias Alimenticias
                   </label>
                   <textarea
@@ -1042,7 +950,7 @@ export default function Home() {
                     value={diet}
                     onChange={(e) => setDiet(e.target.value)}
                     placeholder="Ej. Menú vegetariano, alérgico al gluten..."
-                    className="px-4 py-2.5 rounded bg-[#FDFBF7] border border-[#EFE8DE] text-[#2D1810] text-xs font-sans focus:outline-hidden focus:border-[#C8521A] focus:ring-1 focus:ring-[#C8521A] transition-all shadow-xs resize-none"
+                    className="px-4 py-2.5 rounded bg-[#FDFBF7] border border-[#EFE8DE] text-[#2D1810] text-xs font-sans focus:outline-hidden focus:border-[#E63917] focus:ring-1 focus:ring-[#E63917] transition-all shadow-xs resize-none"
                   />
                 </div>
               </div>
@@ -1054,8 +962,8 @@ export default function Home() {
               disabled={attendance === null}
               className={`w-full py-3 rounded text-[10px] font-bold uppercase tracking-widest text-white shadow-md transition-all duration-300 flex items-center justify-center gap-1.5 ${
                 attendance === null
-                  ? "bg-[#7A1C28]/40 cursor-not-allowed"
-                  : "bg-[#7A1C28] hover:bg-[#5E121B] active:scale-98 cursor-pointer"
+                  ? "bg-[#B00056]/40 cursor-not-allowed"
+                  : "bg-[#B00056] hover:bg-[#5E121B] active:scale-98 cursor-pointer"
               }`}
             >
               <Send className="w-3.5 h-3.5" />
@@ -1067,7 +975,7 @@ export default function Home() {
           {/* Decorative QR Code SVG Pattern */}
           <div className="mt-12 flex flex-col items-center justify-center relative z-10">
             <div className="p-3.5 bg-white border border-[#EFE8DE] rounded-md shadow-xs flex flex-col items-center">
-              <svg className="w-20 h-20 text-[#7A1C28]" viewBox="0 0 100 100" fill="currentColor">
+              <svg className="w-20 h-20 text-[#B00056]" viewBox="0 0 100 100" fill="currentColor">
                 <rect x="0" y="0" width="24" height="24" />
                 <rect x="3" y="3" width="18" height="18" fill="white" />
                 <rect x="6" y="6" width="12" height="12" />
@@ -1118,16 +1026,16 @@ export default function Home() {
 
         {/* ================= FOOTER ================= */}
         <footer className="py-12 text-center bg-[#FDFBF7] border-t border-[#EFE8DE] relative z-10 space-y-2 select-none">
-          <p className="font-serif text-lg font-light text-[#7A1C28] tracking-widest animate-pulse">
+          <p className="font-serif text-lg font-light text-[#B00056] tracking-widest animate-pulse">
             P & R
           </p>
-          <p className="font-sans text-[9px] font-semibold tracking-wider text-[#C8521A]">
+          <p className="font-sans text-[9px] font-semibold tracking-wider text-[#E63917]">
             #BodaPaolaYRogelio
           </p>
-          <p className="font-script text-2xl text-[#7A1C28]/70 pt-2 block">
+          <p className="font-script text-2xl text-[#B00056]/70 pt-2 block">
             Agradecemos de corazón su compañía.
           </p>
-          <p className="font-sans text-[8px] tracking-[0.25em] text-[#7A1C28]/35 uppercase mt-4 block">
+          <p className="font-sans text-[8px] tracking-[0.25em] text-[#B00056]/35 uppercase mt-4 block">
             Paola & Rogelio • 2026
           </p>
         </footer>

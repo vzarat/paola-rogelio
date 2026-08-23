@@ -47,16 +47,16 @@ export default function DetailsSection() {
             Ceremonia Religiosa
           </h3>
           <p className="font-script text-3xl text-navy-primary/70 my-1">
-            Parroquia de San Francisco
+            Gómez Farías, Tamaulipas
           </p>
           <p className="font-sans text-sm text-navy-primary/80 mt-2 font-light">
-            Hora: 16:30 hrs
+            14 de Noviembre 2026
           </p>
           <p className="font-sans text-xs text-navy-primary/60 max-w-[280px] mt-1">
-            Calle de San Francisco s/n, Centro, Valle de Bravo, Estado de México
+            Zona Centro, Gómez Farías, Tamaulipas.
           </p>
           <a
-            href="https://maps.google.com"
+            href="https://maps.google.com/?q=Gomez+Farias+Tamaulipas"
             target="_blank"
             rel="noopener noreferrer"
             className="mt-4 px-4 py-1.5 rounded-full border border-navy-primary/20 text-xs font-semibold uppercase tracking-wider text-navy-primary hover:bg-navy-primary hover:text-white transition-all duration-300 shadow-xs"
@@ -79,16 +79,16 @@ export default function DetailsSection() {
             Recepción y Fiesta
           </h3>
           <p className="font-script text-3xl text-navy-primary/70 my-1">
-            Jardín Vista Hermosa
+            Hostal Casa de Piedra
           </p>
           <p className="font-sans text-sm text-navy-primary/80 mt-2 font-light">
-            Hora: 18:00 hrs
+            Hora: 19:00 hrs
           </p>
           <p className="font-sans text-xs text-navy-primary/60 max-w-[280px] mt-1">
-            Av. del Parque #104, El Cerrillo, Valle de Bravo, Estado de México
+            Calle Hidalgo s/n (a 150m de la Presidencia Municipal), Gómez Farías, Tamaulipas.
           </p>
           <a
-            href="https://maps.google.com"
+            href="https://maps.app.goo.gl/nMLmNS6j987hkA1z7?g_st=iw"
             target="_blank"
             rel="noopener noreferrer"
             className="mt-4 px-4 py-1.5 rounded-full border border-navy-primary/20 text-xs font-semibold uppercase tracking-wider text-navy-primary hover:bg-navy-primary hover:text-white transition-all duration-300 shadow-xs"

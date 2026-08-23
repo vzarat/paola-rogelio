@@ -22,8 +22,8 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Olivia & Ralph — The Wedding",
-  description: "Join us in celebrating the wedding of Olivia and Ralph. View details, dates, love story, and RSVP.",
+  title: "Paola & Rogelio — Nuestra Boda",
+  description: "Acompáñanos a celebrar la boda de Paola y Rogelio. Consulta los detalles, ubicación, mesa de regalos y confirma tu asistencia.",
 };
 
 export default function RootLayout({
@@ -33,7 +33,7 @@ export default function RootLayout({
 }) {
   return (
     <html
-      lang="en"
+      lang="es"
       className={`${playfair.variable} ${greatVibes.variable} ${jakarta.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-[#F5F2EB] text-[#1B365D]">

@@ -10,7 +10,7 @@ export default function HeroSection() {
       {/* Header Editorial */}
       <div className="mt-8 flex flex-col items-center z-10 w-full">
         <p className="font-sans text-[10px] tracking-[0.35em] text-navy-primary/70 uppercase">
-          THE WEDDING OF
+          NUESTRA BODA
         </p>
 
         {/* Decorative Entwined Monogram */}
@@ -18,7 +18,7 @@ export default function HeroSection() {
           {/* Circular border wrapper */}
           <div className="absolute inset-0 rounded-full border border-navy-primary/20 animate-[spin_20s_linear_infinite]" />
           <span className="font-serif text-3xl font-light text-navy-primary tracking-wide relative select-none">
-            O&R
+            P&R
           </span>
         </div>
       </div>
@@ -26,11 +26,11 @@ export default function HeroSection() {
       {/* Main Couple Names */}
       <div className="flex flex-col items-center my-auto py-4 z-10">
         <h1 className="font-serif text-4xl tracking-widest text-navy-primary font-normal uppercase leading-tight">
-          Olivia
+          Paola
         </h1>
-        <span className="font-script text-3xl text-royal-blue my-2">and</span>
+        <span className="font-script text-3xl text-royal-blue my-2">y</span>
         <h1 className="font-serif text-4xl tracking-widest text-navy-primary font-normal uppercase leading-tight">
-          Ralph
+          Rogelio
         </h1>
       </div>
 
@@ -39,7 +39,7 @@ export default function HeroSection() {
         <div className="relative w-full h-full rounded-t-full overflow-hidden">
           <Image
             src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=600&auto=format&fit=crop"
-            alt="Olivia and Ralph Wedding Portada"
+            alt="Paola y Rogelio Boda Portada"
             fill
             sizes="(max-w-md) 220px"
             priority
@@ -62,17 +62,17 @@ export default function HeroSection() {
       {/* Fine Typography Quote */}
       <div className="mb-8 px-4 z-10">
         <p className="font-script text-2xl text-navy-primary/80">
-          "I have found the one whom my soul loves."
+          "He encontrado al amor de mi vida."
         </p>
         <p className="font-sans text-[9px] tracking-widest text-slate-blue uppercase mt-1">
-          — Song of Solomon 3:4
+          — Cantares 3:4
         </p>
       </div>
 
       {/* Scroll Indicator */}
       <div className="absolute bottom-2.5 flex flex-col items-center text-navy-primary/45 animate-bounce">
         <span className="text-[8px] tracking-[0.30em] uppercase font-sans mb-1">
-          Scroll to enter
+          Desliza para entrar
         </span>
         <svg
           className="w-3.5 h-3.5 fill-none stroke-current stroke-2"

@@ -27,18 +27,18 @@ export default function LoveStory() {
       <div className="relative z-10 max-w-xs mx-auto text-center space-y-6">
         {/* Section script title */}
         <span className="font-script text-4xl text-royal-blue block">
-          Our Love Story
+          Nuestra Historia de Amor
         </span>
 
         <h3 className="font-serif text-xs uppercase tracking-[0.25em] text-navy-primary/70">
-          HOW WE MET & CHOSE FOREVER
+          CÓMO NOS CONOCIMOS Y DECIDIMOS EL PARA SIEMPRE
         </h3>
 
         <div className="w-12 border-b border-sepia-border mx-auto my-3" />
 
         {/* Narrative Paragraphs */}
         <p className="font-sans text-xs text-slate-blue leading-relaxed font-light">
-          It all began in the fall of 2021, over a shared love for art, quiet coffee shops, and late-night walks. What started as simple conversations quickly blossomed into a beautiful partnership founded on faith, support, and deep joy.
+          Todo comenzó en el otoño de 2021, compartiendo el amor por el arte, los cafés tranquilos y las caminatas nocturnas. Lo que empezó como conversaciones sencillas rápidamente floreció en una hermosa unión fundada en la fe, el apoyo mutuo y una profunda alegría.
         </p>
 
         <div className="py-2 flex justify-center">
@@ -48,12 +48,12 @@ export default function LoveStory() {
         </div>
 
         <p className="font-sans text-xs text-slate-blue leading-relaxed font-light">
-          Three years later, on a snowy evening overlooking the city lights, Ralph asked Olivia to spend the rest of her life by his side. We cannot wait to begin this new chapter and celebrate our covenant under God with you.
+          Tres años después, en una hermosa velada contemplando las luces de la ciudad, Rogelio le pidió a Paola que pasara el resto de su vida a su lado. No podemos esperar para comenzar este nuevo capítulo y celebrar nuestra unión ante Dios con ustedes.
         </p>
 
         <div className="pt-4">
           <p className="font-script text-3xl text-navy-primary">
-            Olivia & Ralph
+            Paola & Rogelio
           </p>
         </div>
       </div>

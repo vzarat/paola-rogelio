@@ -34,25 +34,22 @@ export default function Details() {
       {/* Header */}
       <div className="text-center mb-10">
         <span className="font-script text-4xl text-royal-blue block">
-          The Details
+          Los Detalles
         </span>
         <p className="font-sans text-[10px] tracking-[0.2em] text-navy-primary/60 uppercase mt-1">
-          GUEST INFORMATION
+          INFORMACIÓN PARA INVITADOS
         </p>
       </div>
 
       {/* Dress Code Block */}
       <div className="max-w-xs mx-auto text-center space-y-6 mb-12">
         <div className="flex justify-center gap-6">
-          {/* Suit SVG */}
+          {/* Hat (Sombrero) SVG */}
           <div className="w-14 h-14 bg-warm-crema rounded-full border border-sepia-border flex items-center justify-center text-navy-primary shadow-xs">
             <svg viewBox="0 0 100 100" className="w-8 h-8 fill-none stroke-current stroke-[2.5]">
-              {/* Suit outline */}
-              <path d="M 20 20 L 50 40 L 80 20 L 70 85 L 30 85 Z" />
-              {/* Tie */}
-              <path d="M 50 40 L 46 55 L 50 65 L 54 55 Z" fill="currentColor" />
-              {/* Lapels */}
-              <path d="M 20 20 L 35 45 M 80 20 L 65 45" />
+              <path d="M 35 25 L 65 25 L 62 65 L 38 65 Z" stroke="#6B7E43" />
+              <path d="M 38 65 L 39 57 L 61 57 L 62 65" stroke="#7A1C28" />
+              <path d="M 20 65 C 25 63, 75 63, 80 65 C 85 66, 85 69, 80 70 C 75 72, 25 72, 20 70 C 15 69, 15 66, 20 65 Z" stroke="#6B7E43" />
             </svg>
           </div>
 
@@ -60,29 +57,29 @@ export default function Details() {
           <div className="w-14 h-14 bg-warm-crema rounded-full border border-sepia-border flex items-center justify-center text-navy-primary shadow-xs">
             <svg viewBox="0 0 100 100" className="w-8 h-8 fill-none stroke-current stroke-[2.5]">
               {/* Dress outline */}
-              <path d="M 40 20 C 45 35, 30 55, 25 85 L 75 85 C 70 55, 55 35, 60 20 Z" />
+              <path d="M 40 20 C 45 35, 30 55, 25 85 L 75 85 C 70 55, 55 35, 60 20 Z" stroke="#7A1C28" fill="#F3D7D7" fillOpacity="0.4" />
               {/* Strap details */}
-              <path d="M 40 20 C 45 15, 55 15, 60 20" />
+              <path d="M 40 20 C 45 15, 55 15, 60 20" stroke="#6B7E43" />
             </svg>
           </div>
         </div>
 
         <div className="space-y-2">
           <h4 className="font-serif text-base font-bold uppercase tracking-widest text-navy-primary">
-            Dress Code
+            Código de Vestimenta
           </h4>
           <p className="font-script text-2xl text-royal-blue">
-            Formal Attire
+            Formal
           </p>
           <p className="font-sans text-xs text-slate-blue leading-relaxed font-light">
-            We kindly request that guests dress in formal wear. For colors, we invite you to take inspiration from our suggested wedding palette below.
+            Vestimenta formal. Agradecemos evitar vestir de color blanco.
           </p>
         </div>
 
         {/* Color Palette Row */}
         <div className="py-2 bg-warm-crema/40 border border-sepia-border/40 rounded-lg p-4">
           <p className="text-[10px] uppercase tracking-wider font-semibold text-navy-primary/70 mb-3">
-            Suggested Palette
+            Paleta de Colores
           </p>
           <div className="flex justify-center gap-3">
             {palette.map((item, idx) => (
@@ -104,32 +101,32 @@ export default function Details() {
       {/* Gift Table Block */}
       <div className="max-w-xs mx-auto text-center space-y-4">
         <h4 className="font-serif text-base font-bold uppercase tracking-widest text-navy-primary">
-          Gift Guide
+          Mesa de Regalos
         </h4>
         <p className="font-sans text-xs text-slate-blue leading-relaxed font-light">
-          Your presence is our biggest gift. Should you wish to honor us with a gesture, we will have a reception card box, or you may transfer directly below:
+          Su presencia es nuestro mayor regalo. Si desean realizarnos un obsequio, tendremos una caja de sobres en la recepción, o pueden realizar una transferencia bancaria a la siguiente cuenta:
         </p>
 
         {/* Transfer bank card */}
         <div className="p-4 rounded border border-sepia-border bg-[#FBF9F5] shadow-xs text-left space-y-2.5 relative">
           <div className="flex justify-between items-center">
             <span className="text-[9px] uppercase tracking-wider text-navy-primary/60 font-semibold">
-              Bank Details
+              Datos Bancarios
             </span>
             <span className="text-[9px] px-2 py-0.5 bg-royal-blue/10 text-royal-blue rounded font-medium">
-              Wire Transfer
+              Transferencia
             </span>
           </div>
 
           <div className="space-y-1">
             <p className="text-xs text-navy-primary font-bold">Banco Unión</p>
-            <p className="text-[11px] text-slate-blue">Holder: Olivia & Ralph Wedding</p>
+            <p className="text-[11px] text-slate-blue">Titular: Boda Paola & Rogelio</p>
             <p className="text-[11px] font-mono text-navy-primary bg-white border border-sepia-border/50 px-2 py-1.5 rounded flex justify-between items-center gap-1 mt-1.5">
               <span>CLABE: {clabeNumber}</span>
               <button
                 onClick={handleCopy}
                 className="p-1 hover:bg-slate-100 rounded text-royal-blue transition-colors shrink-0"
-                title="Copy CLABE Number"
+                title="Copiar número CLABE"
               >
                 {copied ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
               </button>
@@ -145,7 +142,7 @@ export default function Details() {
         }`}
       >
         <Check className="w-3.5 h-3.5 text-sky-blue" />
-        CLABE Copied Successfully!
+        ¡CLABE copiada con éxito!
       </div>
     </section>
   );

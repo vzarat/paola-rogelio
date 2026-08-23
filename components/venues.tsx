@@ -5,16 +5,16 @@ import { MapPin, Navigation } from "lucide-react";
 export default function Venues() {
   const venues = [
     {
-      title: "The Ceremony",
-      time: "2:00 PM",
+      title: "La Ceremonia",
+      time: "6:00 PM",
       location: "St. Mary's Chapel",
       address: "104 Forest Ave, Whispering Pines, NC 28327",
       imageUrl: "https://images.unsplash.com/photo-1545232979-8bf34eb9757b?q=80&w=500&auto=format&fit=crop",
       mapsUrl: "https://maps.google.com/?q=St.+Mary's+Chapel",
     },
     {
-      title: "The Reception",
-      time: "4:00 PM",
+      title: "La Recepción",
+      time: "7:00 PM",
       location: "The Rosewood Estate",
       address: "209 Oak Ridge Lane, Southern Pines, NC 28387",
       imageUrl: "https://images.unsplash.com/photo-1519225495810-7512c696505a?q=80&w=500&auto=format&fit=crop",
@@ -26,10 +26,10 @@ export default function Venues() {
     <section className="py-16 px-6 bg-warm-crema-dark relative border-t border-sepia-border">
       <div className="text-center mb-10">
         <span className="font-script text-4xl text-royal-blue block">
-          The Venues
+          Ubicaciones
         </span>
         <p className="font-sans text-[10px] tracking-[0.2em] text-navy-primary/60 uppercase mt-1">
-          HOW TO GET THERE
+          CÓMO LLEGAR
         </p>
       </div>
 
@@ -77,7 +77,7 @@ export default function Venues() {
                   className="flex items-center justify-center gap-1.5 py-2 rounded border border-navy-primary/15 text-[10px] font-bold uppercase tracking-wider text-navy-primary bg-white hover:bg-navy-primary/5 active:scale-98 transition-all"
                 >
                   <Navigation className="w-3.5 h-3.5 text-royal-blue" />
-                  Open in Google Maps
+                  Abrir en Google Maps
                 </a>
               </div>
             </div>
