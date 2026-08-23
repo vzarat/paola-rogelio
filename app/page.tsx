@@ -104,7 +104,7 @@ export default function Home() {
       const audio = audioRef.current;
       
       const startAudio = () => {
-        audio.currentTime = 122; // Inicia en min 2:02 (122 segundos)
+        audio.currentTime = 0; // Inicia desde el principio
         audio.volume = 0; // Inicia en silencio
         audio.play()
           .then(() => {
@@ -126,7 +126,7 @@ export default function Home() {
               }
             }, intervalTime);
           })
-          .catch((err) => console.error("Error al reproducir /audio/cancion.mp3:", err));
+          .catch((err) => console.error("Error al reproducir /audio/risk-it-all.mp3:", err));
       };
 
       // Si ya cargó los metadatos inicia directo, si no espera el evento
@@ -148,7 +148,7 @@ export default function Home() {
     } else {
       audioRef.current.play()
         .then(() => setIsPlaying(true))
-        .catch((err) => console.error("Error al reproducir /audio/cancion.mp3:", err));
+        .catch((err) => console.error("Error al reproducir /audio/Bruno Mars - Risk It All (Lyrics).mp3:", err));
     }
   };
 
@@ -296,7 +296,7 @@ export default function Home() {
 
         {/* ================= NATIVE HTML5 AUDIO ELEMENT ================= */}
         <audio ref={audioRef} preload="metadata" loop playsInline>
-          <source src="/audio/cancion.mp3" type="audio/mpeg" />
+          <source src="/audio/risk-it-all.mp3" type="audio/mpeg" />
           Tu navegador no soporta el elemento de audio.
         </audio>
 
