@@ -61,7 +61,7 @@ export default function Home() {
   
   // Bank Details Copy State
   const [copied, setCopied] = useState(false);
-  const clabeNumber = "012180009876543219";
+  const clabeNumber = "012822015282373871";
 
   // RSVP Form State
   const [name, setName] = useState("");
@@ -345,13 +345,14 @@ export default function Home() {
           <div className="absolute inset-[20px] border border-dashed border-[#111111]/10 pointer-events-none rounded-md z-5" />
 
           {/* Top Folk Floral Banner Image */}
-          <div className="w-full relative aspect-[3/2] z-10 overflow-hidden border-b border-[#111111]/5">
+          <div className="w-full relative aspect-[3/2] z-10 overflow-hidden">
             <Image
-              src="/images/flores_folk.jpg"
+              src="/images/FLORES.png"
               alt="Decoración Floral Folclórica"
               fill
               priority
               className="object-cover object-center"
+              style={{ mixBlendMode: "multiply" }}
             />
           </div>
 
@@ -432,17 +433,8 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ================= SECCIÓN INTERMEDIA: PAPEL RASGADO (VERTICAL COMPLETA) ================= */}
-        <div className="w-full h-[480px] sm:h-[560px] relative overflow-hidden pointer-events-none select-none z-20">
-          {/* Top Torn Edge (Double Layer) */}
-          <svg viewBox="0 0 100 40" preserveAspectRatio="none" className="absolute -top-1 left-0 right-0 w-full h-12 sm:h-16 pointer-events-none z-20 drop-shadow-[0_8px_12px_rgba(0,0,0,0.18)]">
-            {/* Inner Layer (Beige fiber core) */}
-            <path d="M 0 0 L 0 10.5 L 5 9.5 L 10 13.5 L 15 11.5 L 20 16.5 L 25 14.5 L 30 18.5 L 35 15.5 L 40 20.5 L 45 18.5 L 50 23.5 L 55 21.5 L 60 25.5 L 65 22.5 L 70 27.5 L 75 24.5 L 80 29.5 L 85 27.5 L 90 31.5 L 95 29.5 L 100 33.5 L 100 0 Z" fill="#EFECE6" />
-            {/* Outer Layer (White paper) */}
-            <path d="M 0 0 L 0 8 L 5 7 L 10 11 L 15 9 L 20 14 L 25 12 L 30 16 L 35 13 L 40 18 L 45 16 L 50 21 L 55 19 L 60 23 L 65 20 L 70 25 L 75 22 L 80 27 L 85 25 L 90 29 L 95 27 L 100 31 L 100 0 Z" fill="white" />
-          </svg>
-
-          {/* Background Image of the couple */}
+        {/* ================= SECCIÓN INTERMEDIA ================= */}
+        <div className="w-full h-72 sm:h-96 relative overflow-hidden pointer-events-none select-none z-20">
           <div className="absolute inset-0 z-0">
             <Image
               src="/images/nuestra_historia.jpg"
@@ -453,13 +445,8 @@ export default function Home() {
             />
           </div>
 
-          {/* Bottom Torn Edge (Double Layer) */}
-          <svg viewBox="0 0 100 40" preserveAspectRatio="none" className="absolute -bottom-1 left-0 right-0 w-full h-12 sm:h-16 pointer-events-none z-20 drop-shadow-[0_-8px_12px_rgba(0,0,0,0.18)]">
-            {/* Inner Layer (Beige fiber core) */}
-            <path d="M 0 40 L 0 7.5 L 5 8.5 L 10 5.5 L 15 10.5 L 20 8.5 L 25 12.5 L 30 10.5 L 35 14.5 L 40 11.5 L 45 16.5 L 50 14.5 L 55 18.5 L 60 16.5 L 65 20.5 L 70 18.5 L 75 23.5 L 80 21.5 L 85 25.5 L 90 22.5 L 95 26.5 L 100 24.5 L 100 40 Z" fill="#EFECE6" />
-            {/* Outer Layer (White paper) */}
-            <path d="M 0 40 L 0 10 L 5 11 L 10 8 L 15 13 L 20 11 L 25 15 L 30 13 L 35 17 L 40 14 L 45 19 L 50 17 L 55 21 L 60 19 L 65 23 L 70 21 L 75 26 L 80 24 L 85 28 L 90 25 L 95 29 L 100 27 L 100 40 Z" fill="white" />
-          </svg>
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-16 sm:h-24 bg-gradient-to-b from-white to-transparent z-10" />
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 sm:h-24 bg-gradient-to-t from-white to-transparent z-10" />
         </div>
 
         {/* ================= MENSAJES DE NUESTRA HISTORIA ================= */}
@@ -536,17 +523,8 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ================= SECCIÓN INTERMEDIA 2: PAPEL RASGADO INVERTIDO ================= */}
+        {/* ================= SECCIÓN INTERMEDIA 2 ================= */}
         <div className="w-full h-72 sm:h-96 relative overflow-hidden pointer-events-none select-none z-20">
-          {/* Top Torn Edge (Double Layer) - Sloping Up */}
-          <svg viewBox="0 0 100 40" preserveAspectRatio="none" className="absolute -top-1 left-0 right-0 w-full h-12 sm:h-16 pointer-events-none z-20 drop-shadow-[0_8px_12px_rgba(0,0,0,0.18)]">
-            {/* Inner Layer (Beige fiber core) */}
-            <path d="M 0 0 L 0 33.5 L 4 29.5 L 7 31.5 L 10 27.5 L 14 29.5 L 17 24.5 L 21 26.5 L 25 24.5 L 30 21.5 L 34 23.5 L 38 20.5 L 42 21.5 L 46 18.5 L 50 19.5 L 54 15.5 L 58 16.5 L 62 13.5 L 66 14.5 L 70 10.5 L 74 12.5 L 78 9.5 L 82 10.5 L 86 7.5 L 90 8.5 L 94 6.5 L 97 7.5 L 100 10.5 L 100 0 Z" fill="#EFECE6" />
-            {/* Outer Layer (White paper) */}
-            <path d="M 0 0 L 0 31 L 4 27 L 7 29 L 10 25 L 14 27 L 17 22 L 21 24 L 25 22 L 30 19 L 34 21 L 38 18 L 42 19 L 46 16 L 50 17 L 54 13 L 58 14 L 62 11 L 66 12 L 70 8 L 74 10 L 78 7 L 82 8 L 86 5 L 90 6 L 94 4 L 97 5 L 100 8 L 100 0 Z" fill="white" />
-          </svg>
-
-          {/* Background Image of the couple */}
           <div className="absolute inset-0 z-0">
             <Image
               src="/images/novios-2-hugging.jpg"
@@ -557,13 +535,8 @@ export default function Home() {
             />
           </div>
 
-          {/* Bottom Torn Edge (Double Layer) - Sloping Up */}
-          <svg viewBox="0 0 100 40" preserveAspectRatio="none" className="absolute -bottom-1 left-0 right-0 w-full h-12 sm:h-16 pointer-events-none z-20 drop-shadow-[0_-8px_12px_rgba(0,0,0,0.18)]">
-            {/* Inner Layer (Beige fiber core) */}
-            <path d="M 0 40 L 0 24.5 L 4 26.5 L 8 22.5 L 12 25.5 L 16 21.5 L 20 23.5 L 24 19.5 L 28 21.5 L 32 17.5 L 36 19.5 L 40 15.5 L 44 17.5 L 48 13.5 L 52 14.5 L 56 11.5 L 60 12.5 L 64 9.5 L 68 10.5 L 72 7.5 L 76 8.5 L 80 5.5 L 84 6.5 L 88 2.5 L 92 3.5 L 96 1.5 L 100 7.5 L 100 40 Z" fill="#EFECE6" />
-            {/* Outer Layer (White paper) */}
-            <path d="M 0 40 L 0 27 L 4 29 L 8 25 L 12 28 L 16 24 L 20 26 L 24 22 L 28 24 L 32 20 L 36 22 L 40 18 L 44 20 L 48 16 L 52 17 L 56 14 L 60 15 L 64 12 L 68 13 L 72 10 L 76 11 L 80 8 L 84 9 L 88 5 L 92 6 L 96 4 L 100 10 L 100 40 Z" fill="white" />
-          </svg>
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-16 sm:h-24 bg-gradient-to-b from-white to-transparent z-10" />
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 sm:h-24 bg-gradient-to-t from-white to-transparent z-10" />
         </div>
 
         {/* ================= DETALLES & VESTIMENTA ================= */}
@@ -610,7 +583,7 @@ export default function Home() {
                 Formal
               </h4>
               <p className="font-sans text-xs text-[#111111]/70 leading-relaxed font-light">
-                Hombres de traje / Mujeres de vestido. Agradecemos evitar vestir de color blanco.
+                Agradecemos evitar vestir de color blanco.
               </p>
             </div>
 
@@ -695,7 +668,7 @@ export default function Home() {
                 Mesa de Regalos
               </h4>
               <p className="font-sans text-xs text-[#111111]/70 leading-relaxed font-light">
-                El mejor regalo es su presencia. Si desean realizar un obsequio, agradeceríamos un detalle en efectivo mediante sobre el día del evento o transferencia bancaria:
+                Agradecemos cualquier regalo o detalle de su parte. En caso de que gusten realizar una transferencia bancaria, estos son los datos:
               </p>
 
               {/* Transfer account details card */}
@@ -706,7 +679,7 @@ export default function Home() {
                 </div>
                 <div className="text-xs text-[#111111] space-y-1">
                   <p className="font-bold">Banco Nacional</p>
-                  <p className="text-[11px] text-[#111111]/70">Titular: Paola & Rogelio Boda</p>
+                  <p className="text-[11px] text-[#111111]/70">Titular: Luis Rogelio Lugo</p>
                   <div className="text-[11px] font-mono bg-[#FAF9F5] border border-[#111111]/10 px-2 py-1.5 rounded-none flex justify-between items-center mt-1 focus-within:ring-1 focus-within:ring-black">
                     <span>CLABE: {clabeNumber}</span>
                     <button
@@ -1073,17 +1046,8 @@ export default function Home() {
 
         </section>
 
-        {/* ================= SECCIÓN FOTOGRÁFICA DE CIERRE: PAPEL RASGADO ================= */}
+        {/* ================= SECCIÓN FOTOGRÁFICA DE CIERRE ================= */}
         <div className="w-full h-72 sm:h-96 relative overflow-hidden pointer-events-none select-none z-20">
-          {/* Top Torn Edge (Double Layer) - Sloping Down */}
-          <svg viewBox="0 0 100 40" preserveAspectRatio="none" className="absolute -top-1 left-0 right-0 w-full h-12 sm:h-16 pointer-events-none z-20 drop-shadow-[0_8px_12px_rgba(0,0,0,0.18)]">
-            {/* Inner Layer (Beige fiber core) */}
-            <path d="M 0 0 L 0 10.5 L 5 9.5 L 10 13.5 L 15 11.5 L 20 16.5 L 25 14.5 L 30 18.5 L 35 15.5 L 40 20.5 L 45 18.5 L 50 23.5 L 55 21.5 L 60 25.5 L 65 22.5 L 70 27.5 L 75 24.5 L 80 29.5 L 85 27.5 L 90 31.5 L 95 29.5 L 100 33.5 L 100 0 Z" fill="#EFECE6" />
-            {/* Outer Layer (White paper) */}
-            <path d="M 0 0 L 0 8 L 5 7 L 10 11 L 15 9 L 20 14 L 25 12 L 30 16 L 35 13 L 40 18 L 45 16 L 50 21 L 55 19 L 60 23 L 65 20 L 70 25 L 75 22 L 80 27 L 85 25 L 90 29 L 95 27 L 100 31 L 100 0 Z" fill="white" />
-          </svg>
-
-          {/* Background Image of the couple */}
           <div className="absolute inset-0 z-0">
             <Image
               src="/images/novios-3-kiss.jpg"
@@ -1093,6 +1057,8 @@ export default function Home() {
               className="object-cover object-center"
             />
           </div>
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-16 sm:h-24 bg-gradient-to-b from-white to-transparent z-10" />
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 sm:h-24 bg-gradient-to-t from-white to-transparent z-10" />
         </div>
 
         {/* ================= FOOTER ================= */}
