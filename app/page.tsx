@@ -166,10 +166,9 @@ export default function Home() {
 
     const targetPhone = "528992159176";
     const attendanceMsg = attendance === "yes" ? "¡Sí, con mucho gusto asistiré!" : "Lo siento, no podré asistir";
-    const guestsMsg = attendance === "yes" ? `Pases sugeridos: ${guests}` : "Pases sugeridos: 0";
-    const restrictionsMsg = diet ? `*Mensaje:* ${diet}` : "";
+    const messageContent = diet ? `\n*Mensaje:* ${diet}` : "";
 
-    const text = `¡Hola Paola y Rogelio!\n\nConfirmo mi asistencia a su enlace matrimonial:\n\n*Nombre completo:* ${name}\n*Confirmación:* ${attendanceMsg}\n*${guestsMsg}*${restrictionsMsg ? `\n${restrictionsMsg}` : ""}\n\n¡Les enviamos un fuerte abrazo!`;
+    const text = `¡Hola Paola y Rogelio!\n\nConfirmo mi asistencia a su enlace matrimonial:\n\n*Nombre completo:* ${name}\n*Confirmación:* ${attendanceMsg}${messageContent}\n\n¡Les enviamos un fuerte abrazo!`;
     const encodedText = encodeURIComponent(text);
 
     window.open(`https://wa.me/${targetPhone}?text=${encodedText}`, "_blank");
@@ -934,49 +933,20 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Conditional Fields */}
-            {attendance === "yes" && (
-              <div className="space-y-5 animate-[fadeIn_0.3s_ease-out_forwards]">
-                {/* Number of passes */}
-                <div className="flex flex-col">
-                  <label htmlFor="rsvpGuests" className="text-[10px] font-bold uppercase tracking-widest text-[#111111] mb-2 font-sans">
-                    Número de pases
-                  </label>
-                  <select
-                    id="rsvpGuests"
-                    value={guests}
-                    onChange={(e) => setGuests(e.target.value)}
-                    className="px-4 py-2.5 rounded-none bg-white border border-black/10 text-[#111111] text-xs font-sans focus:outline-hidden focus:border-black transition-all appearance-none"
-                    style={{
-                      backgroundImage: `url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23111111' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e")`,
-                      backgroundRepeat: "no-repeat",
-                      backgroundPosition: "right 1rem center",
-                      backgroundSize: "1.1em",
-                    }}
-                  >
-                    <option value="1">1 Pase</option>
-                    <option value="2">2 Pases (Pase Doble)</option>
-                    <option value="3">3 Pases</option>
-                    <option value="4">4 Pases</option>
-                  </select>
-                </div>
-
-                {/* Mensaje */}
-                <div className="flex flex-col">
-                  <label htmlFor="rsvpDiet" className="text-[10px] font-bold uppercase tracking-widest text-[#111111] mb-2 font-sans">
-                    Mensaje
-                  </label>
-                  <textarea
-                    id="rsvpDiet"
-                    rows={2}
-                    value={diet}
-                    onChange={(e) => setDiet(e.target.value)}
-                    placeholder="Mensaje"
-                    className="px-4 py-2.5 rounded-none bg-white border border-black/10 text-[#111111] text-xs font-sans focus:outline-hidden focus:border-black transition-all resize-none"
-                  />
-                </div>
-              </div>
-            )}
+            {/* Mensaje */}
+            <div className="flex flex-col">
+              <label htmlFor="rsvpDiet" className="text-[10px] font-bold uppercase tracking-widest text-[#111111] mb-2 font-sans">
+                Mensaje
+              </label>
+              <textarea
+                id="rsvpDiet"
+                rows={2}
+                value={diet}
+                onChange={(e) => setDiet(e.target.value)}
+                placeholder="Mensaje o buenos deseos..."
+                className="px-4 py-2.5 rounded-none bg-white border border-black/10 text-[#111111] text-xs font-sans focus:outline-hidden focus:border-black transition-all resize-none"
+              />
+            </div>
 
             {/* Confirm button */}
             <button

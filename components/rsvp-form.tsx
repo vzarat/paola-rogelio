@@ -1,12 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
-import { Send, CheckCircle, HelpCircle } from "lucide-react";
+import { Send } from "lucide-react";
 
 export default function RsvpForm() {
   const [name, setName] = useState("");
   const [attendance, setAttendance] = useState<"yes" | "no" | null>(null);
-  const [guests, setGuests] = useState("1");
   const [diet, setDiet] = useState("");
 
   const handleWhatsAppRedirect = (e: React.FormEvent) => {
@@ -18,10 +17,9 @@ export default function RsvpForm() {
 
     // Build the formatted text message
     const attendanceText = attendance === "yes" ? "Sí, asistiré" : "No podré asistir";
-    const guestsText = attendance === "yes" ? `Acompañantes: ${guests}` : "Acompañantes: 0";
-    const dietText = diet ? `Restricciones alimenticias: ${diet}` : "Restricciones alimenticias: Ninguna";
+    const messageContent = diet ? `\n*Mensaje:* ${diet}` : "";
 
-    const text = `¡Hola Paola y Rogelio!\n\nConfirmo mi asistencia a su boda.\n\n*Nombre:* ${name}\n*Asistencia:* ${attendanceText}\n*${guestsText}*\n*${dietText}*\n\n¡Con muchas ganas de celebrar con ustedes!`;
+    const text = `¡Hola Paola y Rogelio!\n\nConfirmo mi asistencia a su boda.\n\n*Nombre:* ${name}\n*Asistencia:* ${attendanceText}${messageContent}\n\n¡Con muchas ganas de celebrar con ustedes!`;
     const encodedText = encodeURIComponent(text);
 
     // Open WhatsApp link in a new window
@@ -92,49 +90,20 @@ export default function RsvpForm() {
           </div>
         </div>
 
-        {/* Conditional Attending Fields */}
-        {attendance === "yes" && (
-          <div className="space-y-6 animate-[fadeIn_0.3s_ease-out_forwards]">
-            {/* Number of Guests */}
-            <div className="flex flex-col">
-              <label htmlFor="rsvpGuests" className="text-[10px] font-semibold uppercase tracking-wider text-navy-primary/80 mb-2 font-sans">
-                Number of Guests
-              </label>
-              <select
-                id="rsvpGuests"
-                value={guests}
-                onChange={(e) => setGuests(e.target.value)}
-                className="px-4 py-2.5 rounded bg-white border border-sepia-border/80 text-navy-primary text-xs font-sans focus:outline-hidden focus:border-royal-blue focus:ring-1 focus:ring-royal-blue transition-all shadow-xs appearance-none"
-                style={{
-                  backgroundImage: `url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231B365D' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e")`,
-                  backgroundRepeat: "no-repeat",
-                  backgroundPosition: "right 1rem center",
-                  backgroundSize: "1.1em",
-                }}
-              >
-                <option value="1">1 Person</option>
-                <option value="2">2 Persons</option>
-                <option value="3">3 Persons</option>
-                <option value="4">4 Persons</option>
-              </select>
-            </div>
-
-            {/* Diet restrictions */}
-            <div className="flex flex-col">
-              <label htmlFor="rsvpDiet" className="text-[10px] font-semibold uppercase tracking-wider text-navy-primary/80 mb-2 font-sans">
-                Mensaje
-              </label>
-              <input
-                type="text"
-                id="rsvpDiet"
-                value={diet}
-                onChange={(e) => setDiet(e.target.value)}
-                placeholder="Mensaje"
-                className="px-4 py-2.5 rounded bg-white border border-sepia-border/80 text-navy-primary text-xs font-sans focus:outline-hidden focus:border-royal-blue focus:ring-1 focus:ring-royal-blue transition-all shadow-xs"
-              />
-            </div>
-          </div>
-        )}
+        {/* Mensaje */}
+        <div className="flex flex-col">
+          <label htmlFor="rsvpDiet" className="text-[10px] font-semibold uppercase tracking-wider text-navy-primary/80 mb-2 font-sans">
+            Mensaje
+          </label>
+          <input
+            type="text"
+            id="rsvpDiet"
+            value={diet}
+            onChange={(e) => setDiet(e.target.value)}
+            placeholder="Mensaje"
+            className="px-4 py-2.5 rounded bg-white border border-sepia-border/80 text-navy-primary text-xs font-sans focus:outline-hidden focus:border-royal-blue focus:ring-1 focus:ring-royal-blue transition-all shadow-xs"
+          />
+        </div>
 
         {/* Submit to WhatsApp */}
         <button
