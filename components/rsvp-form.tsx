@@ -7,23 +7,45 @@ export default function RsvpForm() {
   const [name, setName] = useState("");
   const [attendance, setAttendance] = useState<"yes" | "no" | null>(null);
   const [diet, setDiet] = useState("");
+  const [rsvpError, setRsvpError] = useState<string | null>(null);
 
   const handleWhatsAppRedirect = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name || !attendance) return;
+    if (!name.trim()) {
+      setRsvpError("Por favor ingresa tu nombre.");
+      return;
+    }
+    if (!attendance) {
+      setRsvpError("Por favor indica si asistirás.");
+      return;
+    }
+
+    setRsvpError(null);
 
     // Configurable wedding organizer WhatsApp phone number
     const phoneNumber = "528992159176";
 
     // Build the formatted text message
     const attendanceText = attendance === "yes" ? "Sí, asistiré" : "No podré asistir";
-    const messageContent = diet ? `\n*Mensaje:* ${diet}` : "";
+    const messageContent = diet.trim() ? `\n*Mensaje:* ${diet.trim()}` : "";
 
-    const text = `¡Hola Paola y Rogelio!\n\nConfirmo mi asistencia a su boda.\n\n*Nombre:* ${name}\n*Asistencia:* ${attendanceText}${messageContent}\n\n¡Con muchas ganas de celebrar con ustedes!`;
+    const text = `¡Hola Paola y Rogelio!\n\nConfirmo mi asistencia a su boda.\n\n*Nombre:* ${name.trim()}\n*Asistencia:* ${attendanceText}${messageContent}\n\n¡Con muchas ganas de celebrar con ustedes!`;
     const encodedText = encodeURIComponent(text);
 
-    // Open WhatsApp link in a new window
-    window.open(`https://wa.me/${phoneNumber}?text=${encodedText}`, "_blank");
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedText}`;
+
+    // Open WhatsApp link reliably across mobile and desktop
+    try {
+      const link = document.createElement("a");
+      link.href = whatsappUrl;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } catch {
+      window.location.href = whatsappUrl;
+    }
   };
 
   return (
@@ -53,7 +75,10 @@ export default function RsvpForm() {
             id="rsvpName"
             required
             value={name}
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => {
+              setName(e.target.value);
+              if (rsvpError) setRsvpError(null);
+            }}
             placeholder="John Doe"
             className="px-4 py-2.5 rounded bg-white border border-sepia-border/80 text-navy-primary text-xs font-sans focus:outline-hidden focus:border-royal-blue focus:ring-1 focus:ring-royal-blue transition-all shadow-xs"
           />
@@ -67,7 +92,10 @@ export default function RsvpForm() {
           <div className="grid grid-cols-2 gap-3">
             <button
               type="button"
-              onClick={() => setAttendance("yes")}
+              onClick={() => {
+                setAttendance("yes");
+                if (rsvpError) setRsvpError(null);
+              }}
               className={`py-2.5 rounded border text-[10px] font-bold uppercase tracking-wider transition-all duration-300 ${
                 attendance === "yes"
                   ? "bg-navy-primary border-navy-primary text-white shadow-md scale-[1.01]"
@@ -78,7 +106,10 @@ export default function RsvpForm() {
             </button>
             <button
               type="button"
-              onClick={() => setAttendance("no")}
+              onClick={() => {
+                setAttendance("no");
+                if (rsvpError) setRsvpError(null);
+              }}
               className={`py-2.5 rounded border text-[10px] font-bold uppercase tracking-wider transition-all duration-300 ${
                 attendance === "no"
                   ? "bg-navy-primary border-navy-primary text-white shadow-md scale-[1.01]"
@@ -105,15 +136,16 @@ export default function RsvpForm() {
           />
         </div>
 
+        {rsvpError && (
+          <p className="text-[11px] text-red-700 bg-red-50 border border-red-200 px-3 py-2 text-center rounded-xs font-sans">
+            {rsvpError}
+          </p>
+        )}
+
         {/* Submit to WhatsApp */}
         <button
           type="submit"
-          disabled={attendance === null}
-          className={`w-full py-3 rounded text-[10px] font-bold uppercase tracking-widest text-white shadow-md transition-all duration-300 flex items-center justify-center gap-1.5 ${
-            attendance === null
-              ? "bg-navy-primary/40 cursor-not-allowed"
-              : "bg-navy-primary hover:bg-royal-blue active:scale-98 cursor-pointer"
-          }`}
+          className="w-full py-3 rounded text-[10px] font-bold uppercase tracking-widest text-white shadow-md transition-all duration-300 flex items-center justify-center gap-1.5 bg-navy-primary hover:bg-royal-blue active:scale-98 cursor-pointer"
         >
           <Send className="w-3.5 h-3.5" />
           Send RSVP via WhatsApp

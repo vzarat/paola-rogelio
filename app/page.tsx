@@ -68,6 +68,7 @@ export default function Home() {
   const [attendance, setAttendance] = useState<"yes" | "no" | null>(null);
   const [guests, setGuests] = useState("1");
   const [diet, setDiet] = useState("");
+  const [rsvpError, setRsvpError] = useState<string | null>(null);
 
   // Intersection Observer for scroll animation triggers (iOS Safari compatible)
   useEffect(() => {
@@ -162,16 +163,38 @@ export default function Home() {
 
   const handleRSVPSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name || !attendance) return;
+    if (!name.trim()) {
+      setRsvpError("Por favor ingresa tu nombre completo.");
+      return;
+    }
+    if (!attendance) {
+      setRsvpError("Por favor indica si podrás asistir.");
+      return;
+    }
+
+    setRsvpError(null);
 
     const targetPhone = "528992159176";
     const attendanceMsg = attendance === "yes" ? "¡Sí, con mucho gusto asistiré!" : "Lo siento, no podré asistir";
-    const messageContent = diet ? `\n*Mensaje:* ${diet}` : "";
+    const messageContent = diet.trim() ? `\n*Mensaje:* ${diet.trim()}` : "";
 
-    const text = `¡Hola Paola y Rogelio!\n\nConfirmo mi asistencia a su enlace matrimonial:\n\n*Nombre completo:* ${name}\n*Confirmación:* ${attendanceMsg}${messageContent}\n\n¡Les enviamos un fuerte abrazo!`;
+    const text = `¡Hola Paola y Rogelio!\n\nConfirmo mi asistencia a su enlace matrimonial:\n\n*Nombre completo:* ${name.trim()}\n*Confirmación:* ${attendanceMsg}${messageContent}\n\n¡Les enviamos un fuerte abrazo!`;
     const encodedText = encodeURIComponent(text);
 
-    window.open(`https://wa.me/${targetPhone}?text=${encodedText}`, "_blank");
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=${targetPhone}&text=${encodedText}`;
+
+    // Universal trigger for iOS Safari, Chrome, and desktop
+    try {
+      const link = document.createElement("a");
+      link.href = whatsappUrl;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } catch {
+      window.location.href = whatsappUrl;
+    }
   };
 
 
@@ -896,7 +919,10 @@ export default function Home() {
                 id="rsvpName"
                 required
                 value={name}
-                onChange={(e) => setName(e.target.value)}
+                onChange={(e) => {
+                  setName(e.target.value);
+                  if (rsvpError) setRsvpError(null);
+                }}
                 placeholder="Ej. Juan Carlos Ramos"
                 className="px-4 py-3 rounded-none bg-[#FAF9F5]/40 border border-black/10 text-[#111111] text-xs font-sans focus:outline-hidden focus:border-black focus:ring-0 focus:bg-white transition-all shadow-xs"
               />
@@ -910,7 +936,10 @@ export default function Home() {
               <div className="grid grid-cols-2 gap-3">
                 <button
                   type="button"
-                  onClick={() => setAttendance("yes")}
+                  onClick={() => {
+                    setAttendance("yes");
+                    if (rsvpError) setRsvpError(null);
+                  }}
                   className={`py-2.5 rounded-none border text-[10px] font-bold uppercase tracking-wider transition-all duration-300 ${
                     attendance === "yes"
                       ? "bg-[#111111] border-[#111111] text-white shadow-xs"
@@ -921,7 +950,10 @@ export default function Home() {
                 </button>
                 <button
                   type="button"
-                  onClick={() => setAttendance("no")}
+                  onClick={() => {
+                    setAttendance("no");
+                    if (rsvpError) setRsvpError(null);
+                  }}
                   className={`py-2.5 rounded-none border text-[10px] font-bold uppercase tracking-wider transition-all duration-300 ${
                     attendance === "no"
                       ? "bg-[#111111] border-[#111111] text-white shadow-xs"
@@ -948,15 +980,16 @@ export default function Home() {
               />
             </div>
 
+            {rsvpError && (
+              <p className="text-[11px] text-red-700 bg-red-50 border border-red-200 px-3 py-2 text-center rounded-xs font-sans">
+                {rsvpError}
+              </p>
+            )}
+
             {/* Confirm button */}
             <button
               type="submit"
-              disabled={attendance === null}
-              className={`w-full py-3.5 rounded-none text-[10px] font-bold uppercase tracking-widest text-white shadow-xs transition-all duration-300 flex items-center justify-center gap-1.5 ${
-                attendance === null
-                  ? "bg-black/30 cursor-not-allowed border border-transparent"
-                  : "bg-[#111111] hover:bg-black active:scale-98 cursor-pointer border border-black"
-              }`}
+              className="w-full py-3.5 rounded-none text-[10px] font-bold uppercase tracking-widest text-white shadow-xs transition-all duration-300 flex items-center justify-center gap-1.5 bg-[#111111] hover:bg-black active:scale-98 cursor-pointer border border-black"
             >
               <Send className="w-3.5 h-3.5" />
               Confirmar por WhatsApp
