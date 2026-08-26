@@ -14,7 +14,7 @@ export default function RsvpForm() {
     if (!name || !attendance) return;
 
     // Configurable wedding organizer WhatsApp phone number
-    const phoneNumber = "521234567890";
+    const phoneNumber = "528992159176";
 
     // Build the formatted text message
     const attendanceText = attendance === "yes" ? "Sí, asistiré" : "No podré asistir";
@@ -122,14 +122,14 @@ export default function RsvpForm() {
             {/* Diet restrictions */}
             <div className="flex flex-col">
               <label htmlFor="rsvpDiet" className="text-[10px] font-semibold uppercase tracking-wider text-navy-primary/80 mb-2 font-sans">
-                Dietary Restrictions / Notes
+                Mensaje
               </label>
               <input
                 type="text"
                 id="rsvpDiet"
                 value={diet}
                 onChange={(e) => setDiet(e.target.value)}
-                placeholder="Vegetarian, allergies, etc."
+                placeholder="Mensaje"
                 className="px-4 py-2.5 rounded bg-white border border-sepia-border/80 text-navy-primary text-xs font-sans focus:outline-hidden focus:border-royal-blue focus:ring-1 focus:ring-royal-blue transition-all shadow-xs"
               />
             </div>
@@ -150,59 +150,6 @@ export default function RsvpForm() {
           Send RSVP via WhatsApp
         </button>
       </form>
-
-      {/* Decorative QR Code SVG */}
-      <div className="mt-12 flex flex-col items-center justify-center relative z-10">
-        <div className="p-3 bg-white border border-sepia-border rounded-md shadow-xs flex flex-col items-center">
-          {/* Detailed Editorial QR Code Grid Pattern */}
-          <svg className="w-24 h-24 text-navy-primary" viewBox="0 0 100 100" fill="currentColor">
-            {/* Corners positioning blocks */}
-            <rect x="0" y="0" width="24" height="24" />
-            <rect x="3" y="3" width="18" height="18" fill="white" />
-            <rect x="6" y="6" width="12" height="12" />
-
-            <rect x="76" y="0" width="24" height="24" />
-            <rect x="79" y="3" width="18" height="18" fill="white" />
-            <rect x="82" y="6" width="12" height="12" />
-
-            <rect x="0" y="76" width="24" height="24" />
-            <rect x="3" y="79" width="18" height="18" fill="white" />
-            <rect x="6" y="82" width="12" height="12" />
-
-            {/* Random elegant geometric grid patterns representing code */}
-            <rect x="32" y="4" width="8" height="8" />
-            <rect x="48" y="0" width="8" height="8" />
-            <rect x="60" y="4" width="8" height="8" />
-            <rect x="36" y="16" width="12" height="8" />
-            <rect x="64" y="16" width="4" height="8" />
-
-            <rect x="4" y="32" width="8" height="8" />
-            <rect x="16" y="36" width="8" height="12" />
-            <rect x="0" y="56" width="8" height="8" />
-            <rect x="12" y="60" width="12" height="4" />
-
-            <rect x="32" y="32" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" />
-            <circle cx="40" cy="40" r="4" />
-
-            <rect x="56" y="32" width="16" height="8" />
-            <rect x="80" y="32" width="16" height="12" />
-            <rect x="64" y="48" width="12" height="12" />
-            <rect x="84" y="48" width="8" height="8" />
-
-            <rect x="32" y="64" width="12" height="8" />
-            <rect x="52" y="64" width="8" height="16" />
-            <rect x="32" y="80" width="16" height="4" />
-            <rect x="44" y="88" width="20" height="8" />
-
-            <rect x="64" y="76" width="12" height="12" />
-            <rect x="80" y="76" width="8" height="4" />
-            <rect x="88" y="84" width="12" height="12" />
-          </svg>
-          <span className="text-[8px] tracking-widest text-slate-blue/60 uppercase font-sans mt-2">
-            SCAN TO VIEW DETAILS
-          </span>
-        </div>
-      </div>
     </section>
   );
 }

@@ -167,9 +167,9 @@ export default function Home() {
     const targetPhone = "528992159176";
     const attendanceMsg = attendance === "yes" ? "¡Sí, con mucho gusto asistiré!" : "Lo siento, no podré asistir";
     const guestsMsg = attendance === "yes" ? `Pases sugeridos: ${guests}` : "Pases sugeridos: 0";
-    const restrictionsMsg = diet ? `Notas / Restricciones dietarias: ${diet}` : "Notas / Restricciones: Ninguna";
+    const restrictionsMsg = diet ? `*Mensaje:* ${diet}` : "";
 
-    const text = `¡Hola Paola y Rogelio!\n\nConfirmo mi asistencia a su enlace matrimonial:\n\n*Nombre completo:* ${name}\n*Confirmación:* ${attendanceMsg}\n*${guestsMsg}*\n*${restrictionsMsg}*\n\n¡Les enviamos un fuerte abrazo!`;
+    const text = `¡Hola Paola y Rogelio!\n\nConfirmo mi asistencia a su enlace matrimonial:\n\n*Nombre completo:* ${name}\n*Confirmación:* ${attendanceMsg}\n*${guestsMsg}*${restrictionsMsg ? `\n${restrictionsMsg}` : ""}\n\n¡Les enviamos un fuerte abrazo!`;
     const encodedText = encodeURIComponent(text);
 
     window.open(`https://wa.me/${targetPhone}?text=${encodedText}`, "_blank");
@@ -961,17 +961,17 @@ export default function Home() {
                   </select>
                 </div>
 
-                {/* Diet notes */}
+                {/* Mensaje */}
                 <div className="flex flex-col">
                   <label htmlFor="rsvpDiet" className="text-[10px] font-bold uppercase tracking-widest text-[#111111] mb-2 font-sans">
-                    Mensaje o Alergias Alimenticias
+                    Mensaje
                   </label>
                   <textarea
                     id="rsvpDiet"
                     rows={2}
                     value={diet}
                     onChange={(e) => setDiet(e.target.value)}
-                    placeholder="Ej. Menú vegetariano, alérgico al gluten..."
+                    placeholder="Mensaje"
                     className="px-4 py-2.5 rounded-none bg-white border border-black/10 text-[#111111] text-xs font-sans focus:outline-hidden focus:border-black transition-all resize-none"
                   />
                 </div>
@@ -993,56 +993,6 @@ export default function Home() {
             </button>
 
           </form>
-
-          {/* Decorative QR Code SVG Pattern */}
-          <div className="mt-12 flex flex-col items-center justify-center relative z-10 scroll-reveal">
-            <div className="p-3.5 bg-white border border-black/10 rounded-none flex flex-col items-center">
-              <svg className="w-16 h-16 text-black" viewBox="0 0 100 100" fill="currentColor">
-                <rect x="0" y="0" width="24" height="24" />
-                <rect x="3" y="3" width="18" height="18" fill="white" />
-                <rect x="6" y="6" width="12" height="12" />
-
-                <rect x="76" y="0" width="24" height="24" />
-                <rect x="79" y="3" width="18" height="18" fill="white" />
-                <rect x="82" y="6" width="12" height="12" />
-
-                <rect x="0" y="76" width="24" height="24" />
-                <rect x="3" y="79" width="18" height="18" fill="white" />
-                <rect x="6" y="82" width="12" height="12" />
-
-                <rect x="32" y="4" width="8" height="8" />
-                <rect x="48" y="0" width="8" height="8" />
-                <rect x="60" y="4" width="8" height="8" />
-                <rect x="36" y="16" width="12" height="8" />
-                <rect x="64" y="16" width="4" height="8" />
-
-                <rect x="4" y="32" width="8" height="8" />
-                <rect x="16" y="36" width="8" height="12" />
-                <rect x="0" y="56" width="8" height="8" />
-                <rect x="12" y="60" width="12" height="4" />
-
-                <rect x="32" y="32" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" />
-                <circle cx="40" cy="40" r="3.5" />
-
-                <rect x="56" y="32" width="16" height="8" />
-                <rect x="80" y="32" width="16" height="12" />
-                <rect x="64" y="48" width="12" height="12" />
-                <rect x="84" y="48" width="8" height="8" />
-
-                <rect x="32" y="64" width="12" height="8" />
-                <rect x="52" y="64" width="8" height="16" />
-                <rect x="32" y="80" width="16" height="4" />
-                <rect x="44" y="88" width="20" height="8" />
-
-                <rect x="64" y="76" width="12" height="12" />
-                <rect x="80" y="76" width="8" height="4" />
-                <rect x="88" y="84" width="12" height="12" />
-              </svg>
-              <span className="text-[9px] tracking-widest text-black/50 uppercase font-sans mt-2 font-semibold">
-                #BodaPaolaYRogelio
-              </span>
-            </div>
-          </div>
 
         </section>
 
