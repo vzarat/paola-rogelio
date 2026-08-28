@@ -65,7 +65,7 @@ export default function Home() {
 
   // RSVP Form State
   const [name, setName] = useState("");
-  const [attendance, setAttendance] = useState<"yes" | "no" | null>(null);
+  const [attendance, setAttendance] = useState<"yes" | "no">("yes");
   const [guests, setGuests] = useState("1");
   const [diet, setDiet] = useState("");
   const [rsvpError, setRsvpError] = useState<string | null>(null);
@@ -165,10 +165,8 @@ export default function Home() {
     e.preventDefault();
     if (!name.trim()) {
       setRsvpError("Por favor ingresa tu nombre completo.");
-      return;
-    }
-    if (!attendance) {
-      setRsvpError("Por favor indica si podrás asistir.");
+      const inputEl = document.getElementById("rsvpName");
+      if (inputEl) inputEl.focus();
       return;
     }
 
@@ -181,19 +179,19 @@ export default function Home() {
     const text = `¡Hola Paola y Rogelio!\n\nConfirmo mi asistencia a su enlace matrimonial:\n\n*Nombre completo:* ${name.trim()}\n*Confirmación:* ${attendanceMsg}${messageContent}\n\n¡Les enviamos un fuerte abrazo!`;
     const encodedText = encodeURIComponent(text);
 
-    const whatsappUrl = `https://api.whatsapp.com/send?phone=${targetPhone}&text=${encodedText}`;
+    const whatsappUrl = `https://wa.me/${targetPhone}?text=${encodedText}`;
 
-    // Universal trigger for iOS Safari, Chrome, and desktop
-    try {
-      const link = document.createElement("a");
-      link.href = whatsappUrl;
-      link.target = "_blank";
-      link.rel = "noopener noreferrer";
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    } catch {
-      window.location.href = whatsappUrl;
+    // Reliable redirect for mobile browsers, webviews and desktop
+    if (typeof window !== "undefined") {
+      const isMobile = /Android|iPhone|iPad|iPod|webOS|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      if (isMobile) {
+        window.location.href = whatsappUrl;
+      } else {
+        const newTab = window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+        if (!newTab || newTab.closed || typeof newTab.closed === "undefined") {
+          window.location.href = whatsappUrl;
+        }
+      }
     }
   };
 
@@ -907,24 +905,25 @@ export default function Home() {
             <div className="w-8 my-3 border-b border-black/25 mx-auto scroll-reveal delay-100" />
           </div>
 
-          <form onSubmit={handleRSVPSubmit} className="space-y-5 relative z-10 max-w-xs mx-auto text-left scroll-reveal">
+          <form onSubmit={handleRSVPSubmit} noValidate className="space-y-5 relative z-10 max-w-xs mx-auto text-left scroll-reveal">
             
             {/* Name */}
             <div className="flex flex-col">
               <label htmlFor="rsvpName" className="text-[10px] font-bold uppercase tracking-widest text-[#111111] mb-2 font-sans">
-                Nombre Completo
+                Nombre Completo *
               </label>
               <input
                 type="text"
                 id="rsvpName"
-                required
                 value={name}
                 onChange={(e) => {
                   setName(e.target.value);
                   if (rsvpError) setRsvpError(null);
                 }}
                 placeholder="Ej. Juan Carlos Ramos"
-                className="px-4 py-3 rounded-none bg-[#FAF9F5]/40 border border-black/10 text-[#111111] text-xs font-sans focus:outline-hidden focus:border-black focus:ring-0 focus:bg-white transition-all shadow-xs"
+                className={`px-4 py-3 rounded-none bg-[#FAF9F5]/40 border text-[#111111] text-xs font-sans focus:outline-hidden focus:border-black focus:ring-0 focus:bg-white transition-all shadow-xs ${
+                  rsvpError && !name.trim() ? "border-red-500 bg-red-50/30" : "border-black/10"
+                }`}
               />
             </div>
 
@@ -940,7 +939,7 @@ export default function Home() {
                     setAttendance("yes");
                     if (rsvpError) setRsvpError(null);
                   }}
-                  className={`py-2.5 rounded-none border text-[10px] font-bold uppercase tracking-wider transition-all duration-300 ${
+                  className={`py-2.5 rounded-none border text-[10px] font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer ${
                     attendance === "yes"
                       ? "bg-[#111111] border-[#111111] text-white shadow-xs"
                       : "bg-white border-black/10 text-black/60 hover:bg-[#FAF9F5]"
@@ -954,7 +953,7 @@ export default function Home() {
                     setAttendance("no");
                     if (rsvpError) setRsvpError(null);
                   }}
-                  className={`py-2.5 rounded-none border text-[10px] font-bold uppercase tracking-wider transition-all duration-300 ${
+                  className={`py-2.5 rounded-none border text-[10px] font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer ${
                     attendance === "no"
                       ? "bg-[#111111] border-[#111111] text-white shadow-xs"
                       : "bg-white border-black/10 text-black/60 hover:bg-[#FAF9F5]"
@@ -968,7 +967,7 @@ export default function Home() {
             {/* Mensaje */}
             <div className="flex flex-col">
               <label htmlFor="rsvpDiet" className="text-[10px] font-bold uppercase tracking-widest text-[#111111] mb-2 font-sans">
-                Mensaje
+                Mensaje (Opcional)
               </label>
               <textarea
                 id="rsvpDiet"
@@ -981,7 +980,7 @@ export default function Home() {
             </div>
 
             {rsvpError && (
-              <p className="text-[11px] text-red-700 bg-red-50 border border-red-200 px-3 py-2 text-center rounded-xs font-sans">
+              <p className="text-[11px] text-red-700 bg-red-50 border border-red-200 px-3 py-2 text-center rounded-xs font-sans animate-fade-in-up">
                 {rsvpError}
               </p>
             )}
@@ -989,7 +988,7 @@ export default function Home() {
             {/* Confirm button */}
             <button
               type="submit"
-              className="w-full py-3.5 rounded-none text-[10px] font-bold uppercase tracking-widest text-white shadow-xs transition-all duration-300 flex items-center justify-center gap-1.5 bg-[#111111] hover:bg-black active:scale-98 cursor-pointer border border-black"
+              className="w-full py-3.5 rounded-none text-[10px] font-bold uppercase tracking-widest text-white shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 bg-[#111111] hover:bg-black active:scale-[0.98] cursor-pointer border border-black"
             >
               <Send className="w-3.5 h-3.5" />
               Confirmar por WhatsApp

@@ -5,7 +5,7 @@ import { Send } from "lucide-react";
 
 export default function RsvpForm() {
   const [name, setName] = useState("");
-  const [attendance, setAttendance] = useState<"yes" | "no" | null>(null);
+  const [attendance, setAttendance] = useState<"yes" | "no">("yes");
   const [diet, setDiet] = useState("");
   const [rsvpError, setRsvpError] = useState<string | null>(null);
 
@@ -13,10 +13,8 @@ export default function RsvpForm() {
     e.preventDefault();
     if (!name.trim()) {
       setRsvpError("Por favor ingresa tu nombre.");
-      return;
-    }
-    if (!attendance) {
-      setRsvpError("Por favor indica si asistirás.");
+      const inputEl = document.getElementById("rsvpName");
+      if (inputEl) inputEl.focus();
       return;
     }
 
@@ -32,19 +30,19 @@ export default function RsvpForm() {
     const text = `¡Hola Paola y Rogelio!\n\nConfirmo mi asistencia a su boda.\n\n*Nombre:* ${name.trim()}\n*Asistencia:* ${attendanceText}${messageContent}\n\n¡Con muchas ganas de celebrar con ustedes!`;
     const encodedText = encodeURIComponent(text);
 
-    const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedText}`;
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedText}`;
 
     // Open WhatsApp link reliably across mobile and desktop
-    try {
-      const link = document.createElement("a");
-      link.href = whatsappUrl;
-      link.target = "_blank";
-      link.rel = "noopener noreferrer";
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    } catch {
-      window.location.href = whatsappUrl;
+    if (typeof window !== "undefined") {
+      const isMobile = /Android|iPhone|iPad|iPod|webOS|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      if (isMobile) {
+        window.location.href = whatsappUrl;
+      } else {
+        const newTab = window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+        if (!newTab || newTab.closed || typeof newTab.closed === "undefined") {
+          window.location.href = whatsappUrl;
+        }
+      }
     }
   };
 
